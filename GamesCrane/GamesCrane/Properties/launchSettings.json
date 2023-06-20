@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "GamesCrane (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "GamesCrane (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
