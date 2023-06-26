@@ -31,7 +31,10 @@ namespace GamesCrane
 
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe");
+            //System.Diagnostics.Process.Start("C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe");
+            var window = new Window();
+            window.Content = new TextBlock() { Text = "Hello" };
+            window.Activate();
         }
     }
 }
