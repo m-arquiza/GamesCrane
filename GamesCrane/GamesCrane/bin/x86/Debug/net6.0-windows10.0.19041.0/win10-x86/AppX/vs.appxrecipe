@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-06-28T01:56:09.713</Modified>
+      <Modified>2023-09-02T06:15:31.121</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-06-28T01:56:09.483</Modified>
+      <Modified>2023-09-02T06:09:50.967</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.runtimeconfig.json">
       <PackagePath>GamesCrane.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.dll">
       <PackagePath>GamesCrane.dll</PackagePath>
-      <Modified>2023-06-28T01:56:09.381</Modified>
+      <Modified>2023-09-02T06:15:30.791</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>GamesCrane.exe</PackagePath>
-      <Modified>2023-06-28T01:56:09.388</Modified>
+      <Modified>2023-09-02T06:15:30.798</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.deps.json">
       <PackagePath>GamesCrane.deps.json</PackagePath>
@@ -1016,6 +1016,10 @@
     <AppxPackagedFile Include="C:\Users\Miche\.nuget\packages\microsoft.windowsappsdk\1.3.230502000\runtimes\win10-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
       <Modified>2023-04-28T12:59:12.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\background_test.png">
+      <PackagePath>Assets\background_test.png</PackagePath>
+      <Modified>2023-09-02T06:00:03.573</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>

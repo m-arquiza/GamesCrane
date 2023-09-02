@@ -27,6 +27,12 @@ namespace GamesCrane
         public MainWindow()
         {
             this.InitializeComponent();
+
+            IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+
+            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1520, Height = 855 });
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
