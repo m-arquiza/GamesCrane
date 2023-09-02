@@ -32,7 +32,20 @@ namespace GamesCrane
             var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
-            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1520, Height = 855 });
+            if (appWindow is not null) {
+                appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1520, Height = 855 });
+
+                Microsoft.UI.Windowing.DisplayArea displayArea = 
+                    Microsoft.UI.Windowing.DisplayArea.GetFromWindowId(windowId, 
+                    Microsoft.UI.Windowing.DisplayAreaFallback.Nearest);
+
+                if (displayArea is not null) {
+                    var CenteredPosition = appWindow.Position;
+                    CenteredPosition.X = ((displayArea.WorkArea.Width - appWindow.Size.Width) / 2);
+                    CenteredPosition.Y = ((displayArea.WorkArea.Height - appWindow.Size.Height) / 2);
+                    appWindow.Move(CenteredPosition);
+                }
+            }
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
