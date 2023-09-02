@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GamesCrane",
+    "\\GamesCrane\\GamesCrane"
   ],
+  "SelectedNode": "\\GamesCrane\\GamesCrane\\MainWindow.xaml.cs",
   "PreviewInSolutionExplorer": false
 }
