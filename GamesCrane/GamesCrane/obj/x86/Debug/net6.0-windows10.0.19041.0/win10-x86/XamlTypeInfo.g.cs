@@ -230,7 +230,7 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             _typeNameTable[2] = "Object";
             _typeNameTable[3] = "Boolean";
             _typeNameTable[4] = "GamesCrane.ViewModel.AddGameViewModel";
-            _typeNameTable[5] = "String";
+            _typeNameTable[5] = "GamesCrane.Model.AddGameModel";
             _typeNameTable[6] = "GamesCrane.View.AddGame";
             _typeNameTable[7] = "Microsoft.UI.Xaml.Controls.UserControl";
             _typeNameTable[8] = "GamesCrane.ViewModel.MainWindowViewModel";
@@ -247,7 +247,7 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             _typeTable[2] = typeof(global::System.Object);
             _typeTable[3] = typeof(global::System.Boolean);
             _typeTable[4] = typeof(global::GamesCrane.ViewModel.AddGameViewModel);
-            _typeTable[5] = typeof(global::System.String);
+            _typeTable[5] = typeof(global::GamesCrane.Model.AddGameModel);
             _typeTable[6] = typeof(global::GamesCrane.View.AddGame);
             _typeTable[7] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
             _typeTable[8] = typeof(global::GamesCrane.ViewModel.MainWindowViewModel);
@@ -293,6 +293,7 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
 
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
         private object Activate_4_AddGameViewModel() { return new global::GamesCrane.ViewModel.AddGameViewModel(); }
+        private object Activate_5_AddGameModel() { return new global::GamesCrane.Model.AddGameModel(); }
         private object Activate_6_AddGame() { return new global::GamesCrane.View.AddGame(); }
         private object Activate_8_MainWindowViewModel() { return new global::GamesCrane.ViewModel.MainWindowViewModel(); }
         private object Activate_9_MainWindow() { return new global::GamesCrane.View.MainWindow(); }
@@ -344,13 +345,16 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             case 4:   //  GamesCrane.ViewModel.AddGameViewModel
                 userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_4_AddGameViewModel;
-                userType.AddMemberName("GamePath");
+                userType.AddMemberName("NewGame");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 5:   //  String
-                xamlType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+            case 5:   //  GamesCrane.Model.AddGameModel
+                userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
 
             case 6:   //  GamesCrane.View.AddGame
@@ -479,15 +483,15 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.XamlControlsResources)instance;
             that.UseCompactResources = (global::System.Boolean)Value;
         }
-        private object get_1_AddGameViewModel_GamePath(object instance)
+        private object get_1_AddGameViewModel_NewGame(object instance)
         {
             var that = (global::GamesCrane.ViewModel.AddGameViewModel)instance;
-            return that.GamePath;
+            return that.NewGame;
         }
-        private void set_1_AddGameViewModel_GamePath(object instance, object Value)
+        private void set_1_AddGameViewModel_NewGame(object instance, object Value)
         {
             var that = (global::GamesCrane.ViewModel.AddGameViewModel)instance;
-            that.GamePath = (global::System.String)Value;
+            that.NewGame = (global::GamesCrane.Model.AddGameModel)Value;
         }
         private object get_2_TreeViewNode_Children(object instance)
         {
@@ -554,11 +558,11 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
                 xamlMember.Getter = get_0_XamlControlsResources_UseCompactResources;
                 xamlMember.Setter = set_0_XamlControlsResources_UseCompactResources;
                 break;
-            case "GamesCrane.ViewModel.AddGameViewModel.GamePath":
+            case "GamesCrane.ViewModel.AddGameViewModel.NewGame":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GamesCrane.ViewModel.AddGameViewModel");
-                xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "GamePath", "String");
-                xamlMember.Getter = get_1_AddGameViewModel_GamePath;
-                xamlMember.Setter = set_1_AddGameViewModel_GamePath;
+                xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "NewGame", "GamesCrane.Model.AddGameModel");
+                xamlMember.Getter = get_1_AddGameViewModel_NewGame;
+                xamlMember.Setter = set_1_AddGameViewModel_NewGame;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Children":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");

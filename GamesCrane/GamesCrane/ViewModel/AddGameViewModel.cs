@@ -6,26 +6,34 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
+using GamesCrane.Model;
 
 namespace GamesCrane.ViewModel
 {
     public class AddGameViewModel : INotifyPropertyChanged
     {
-        private string _gamePath;
+        private AddGameModel _newGame;
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-        public string GamePath
+        public AddGameViewModel()
+        {
+            NewGame = new AddGameModel();
+        }
+
+        public AddGameModel NewGame
         {
             get
             {
-                return _gamePath;
+                Debug.WriteLine("inside get");
+                return _newGame;
             }
             set
             {
-                if (_gamePath != value)
+                Debug.WriteLine("inside set");
+
+                if (_newGame != value)
                 {
-                    _gamePath = value;
+                    _newGame = value;
                     OnPropertyChanged();
                 }
             }

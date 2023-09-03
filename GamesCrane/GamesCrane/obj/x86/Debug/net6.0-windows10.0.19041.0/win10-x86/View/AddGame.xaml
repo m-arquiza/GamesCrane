@@ -8,26 +8,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d">
 
-    <Grid x:ConnectionId='2' x:Name="GameInput" Width="500" Height="300">
-        <Grid.DataContext>
-            <vm:AddGameViewModel/>
-        </Grid.DataContext>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <UserControl.DataContext>
+        <vm:AddGameViewModel/>
+    </UserControl.DataContext>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="3*" />
-        </Grid.ColumnDefinitions>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding GamePath}" 
-                HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <TextBox x:ConnectionId='3' Grid.Row="0" Grid.Column="1" Name="GamePath"
-                 VerticalAlignment="Center" Text="{Binding GamePath, Mode=TwoWay}"/>
+        <Grid x:ConnectionId='2' x:Name="GameInput" Width="500" Height="300">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-    </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding NewGame.Path}" 
+                    HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <TextBox x:ConnectionId='3' Grid.Row="0" Grid.Column="1" Name="GamePath"
+                     VerticalAlignment="Center" Text="{Binding NewGame.Path, Mode=TwoWay}"/>
+        </Grid>
+        <!--<Button Command="{Binding SendCommand}" Content="Send" />-->
+    </StackPanel>
+
 
 </UserControl>
 
