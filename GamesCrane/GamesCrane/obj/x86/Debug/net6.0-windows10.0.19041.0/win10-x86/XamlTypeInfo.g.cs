@@ -224,7 +224,7 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[17];
+            _typeNameTable = new string[18];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -236,14 +236,15 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             _typeNameTable[8] = "GamesCrane.View.AddGame";
             _typeNameTable[9] = "Microsoft.UI.Xaml.Controls.UserControl";
             _typeNameTable[10] = "GamesCrane.ViewModel.MainWindowViewModel";
-            _typeNameTable[11] = "GamesCrane.View.MainWindow";
-            _typeNameTable[12] = "Microsoft.UI.Xaml.Window";
-            _typeNameTable[13] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[14] = "Microsoft.UI.Xaml.DependencyObject";
-            _typeNameTable[15] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
-            _typeNameTable[16] = "Int32";
+            _typeNameTable[11] = "Microsoft.UI.Xaml.Visibility";
+            _typeNameTable[12] = "GamesCrane.View.MainWindow";
+            _typeNameTable[13] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[14] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[15] = "Microsoft.UI.Xaml.DependencyObject";
+            _typeNameTable[16] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
+            _typeNameTable[17] = "Int32";
 
-            _typeTable = new global::System.Type[17];
+            _typeTable = new global::System.Type[18];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -255,12 +256,13 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             _typeTable[8] = typeof(global::GamesCrane.View.AddGame);
             _typeTable[9] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
             _typeTable[10] = typeof(global::GamesCrane.ViewModel.MainWindowViewModel);
-            _typeTable[11] = typeof(global::GamesCrane.View.MainWindow);
-            _typeTable[12] = typeof(global::Microsoft.UI.Xaml.Window);
-            _typeTable[13] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[14] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
-            _typeTable[15] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
-            _typeTable[16] = typeof(global::System.Int32);
+            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Visibility);
+            _typeTable[12] = typeof(global::GamesCrane.View.MainWindow);
+            _typeTable[13] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[14] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[15] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
+            _typeTable[16] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
+            _typeTable[17] = typeof(global::System.Int32);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -300,8 +302,8 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
         private object Activate_5_AddGameModel() { return new global::GamesCrane.Model.AddGameModel(); }
         private object Activate_8_AddGame() { return new global::GamesCrane.View.AddGame(); }
         private object Activate_10_MainWindowViewModel() { return new global::GamesCrane.ViewModel.MainWindowViewModel(); }
-        private object Activate_11_MainWindow() { return new global::GamesCrane.View.MainWindow(); }
-        private object Activate_13_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_12_MainWindow() { return new global::GamesCrane.View.MainWindow(); }
+        private object Activate_14_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -309,7 +311,7 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
         }
-        private void VectorAdd_15_IList(object instance, object item)
+        private void VectorAdd_16_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -387,24 +389,30 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             case 10:   //  GamesCrane.ViewModel.MainWindowViewModel
                 userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.Activator = Activate_10_MainWindowViewModel;
+                userType.AddMemberName("AddGameVis");
+                userType.AddMemberName("AddGameCommand");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 11:   //  GamesCrane.View.MainWindow
-                userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_11_MainWindow;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 12:   //  Microsoft.UI.Xaml.Window
+            case 11:   //  Microsoft.UI.Xaml.Visibility
                 xamlType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 13:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 12:   //  GamesCrane.View.MainWindow
+                userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
+                userType.Activator = Activate_12_MainWindow;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 13:   //  Microsoft.UI.Xaml.Window
+                xamlType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 14:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_13_TreeViewNode;
+                userType.Activator = Activate_14_TreeViewNode;
                 userType.AddMemberName("Children");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("Depth");
@@ -416,18 +424,18 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 14:   //  Microsoft.UI.Xaml.DependencyObject
+            case 15:   //  Microsoft.UI.Xaml.DependencyObject
                 xamlType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 16:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.CollectionAdd = VectorAdd_15_IList;
+                userType.CollectionAdd = VectorAdd_16_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 16:   //  Int32
+            case 17:   //  Int32
                 xamlType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -524,52 +532,67 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             var that = (global::GamesCrane.ViewModel.AddGameViewModel)instance;
             return that.DisplayGameCommand;
         }
-        private object get_4_TreeViewNode_Children(object instance)
+        private object get_4_MainWindowViewModel_AddGameVis(object instance)
+        {
+            var that = (global::GamesCrane.ViewModel.MainWindowViewModel)instance;
+            return that.AddGameVis;
+        }
+        private void set_4_MainWindowViewModel_AddGameVis(object instance, object Value)
+        {
+            var that = (global::GamesCrane.ViewModel.MainWindowViewModel)instance;
+            that.AddGameVis = (global::Microsoft.UI.Xaml.Visibility)Value;
+        }
+        private object get_5_MainWindowViewModel_AddGameCommand(object instance)
+        {
+            var that = (global::GamesCrane.ViewModel.MainWindowViewModel)instance;
+            return that.AddGameCommand;
+        }
+        private object get_6_TreeViewNode_Children(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Children;
         }
-        private object get_5_TreeViewNode_Content(object instance)
+        private object get_7_TreeViewNode_Content(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Content;
         }
-        private void set_5_TreeViewNode_Content(object instance, object Value)
+        private void set_7_TreeViewNode_Content(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.Content = (global::System.Object)Value;
         }
-        private object get_6_TreeViewNode_Depth(object instance)
+        private object get_8_TreeViewNode_Depth(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Depth;
         }
-        private object get_7_TreeViewNode_HasChildren(object instance)
+        private object get_9_TreeViewNode_HasChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasChildren;
         }
-        private object get_8_TreeViewNode_HasUnrealizedChildren(object instance)
+        private object get_10_TreeViewNode_HasUnrealizedChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasUnrealizedChildren;
         }
-        private void set_8_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
+        private void set_10_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.HasUnrealizedChildren = (global::System.Boolean)Value;
         }
-        private object get_9_TreeViewNode_IsExpanded(object instance)
+        private object get_11_TreeViewNode_IsExpanded(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.IsExpanded;
         }
-        private void set_9_TreeViewNode_IsExpanded(object instance, object Value)
+        private void set_11_TreeViewNode_IsExpanded(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.IsExpanded = (global::System.Boolean)Value;
         }
-        private object get_10_TreeViewNode_Parent(object instance)
+        private object get_12_TreeViewNode_Parent(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Parent;
@@ -607,50 +630,62 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
                 xamlMember.Getter = get_3_AddGameViewModel_DisplayGameCommand;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "GamesCrane.ViewModel.MainWindowViewModel.AddGameVis":
+                userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GamesCrane.ViewModel.MainWindowViewModel");
+                xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "AddGameVis", "Microsoft.UI.Xaml.Visibility");
+                xamlMember.Getter = get_4_MainWindowViewModel_AddGameVis;
+                xamlMember.Setter = set_4_MainWindowViewModel_AddGameVis;
+                break;
+            case "GamesCrane.ViewModel.MainWindowViewModel.AddGameCommand":
+                userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GamesCrane.ViewModel.MainWindowViewModel");
+                xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "AddGameCommand", "System.Windows.Input.ICommand");
+                xamlMember.Getter = get_5_MainWindowViewModel_AddGameCommand;
+                xamlMember.SetIsReadOnly();
+                break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Children":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "Children", "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>");
-                xamlMember.Getter = get_4_TreeViewNode_Children;
+                xamlMember.Getter = get_6_TreeViewNode_Children;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Content":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "Content", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_5_TreeViewNode_Content;
-                xamlMember.Setter = set_5_TreeViewNode_Content;
+                xamlMember.Getter = get_7_TreeViewNode_Content;
+                xamlMember.Setter = set_7_TreeViewNode_Content;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Depth":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "Depth", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_6_TreeViewNode_Depth;
+                xamlMember.Getter = get_8_TreeViewNode_Depth;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasChildren":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "HasChildren", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_7_TreeViewNode_HasChildren;
+                xamlMember.Getter = get_9_TreeViewNode_HasChildren;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasUnrealizedChildren":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "HasUnrealizedChildren", "Boolean");
-                xamlMember.Getter = get_8_TreeViewNode_HasUnrealizedChildren;
-                xamlMember.Setter = set_8_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Getter = get_10_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Setter = set_10_TreeViewNode_HasUnrealizedChildren;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.IsExpanded":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "IsExpanded", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_9_TreeViewNode_IsExpanded;
-                xamlMember.Setter = set_9_TreeViewNode_IsExpanded;
+                xamlMember.Getter = get_11_TreeViewNode_IsExpanded;
+                xamlMember.Setter = set_11_TreeViewNode_IsExpanded;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Parent":
                 userType = (global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlMember(this, "Parent", "Microsoft.UI.Xaml.Controls.TreeViewNode");
-                xamlMember.Getter = get_10_TreeViewNode_Parent;
+                xamlMember.Getter = get_12_TreeViewNode_Parent;
                 xamlMember.SetIsReadOnly();
                 break;
             }

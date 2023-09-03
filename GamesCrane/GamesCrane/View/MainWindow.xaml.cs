@@ -13,11 +13,14 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.UI.Windowing;
 
 namespace GamesCrane.View
 {
     public sealed partial class MainWindow : Window
     {
+        private OverlappedPresenter _presenter;
+
         public MainWindow()
         {
             this.InitializeComponent();
@@ -26,7 +29,7 @@ namespace GamesCrane.View
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-
+            
             if (appWindow is not null)
             {
                 appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1520, Height = 855 });
@@ -43,14 +46,11 @@ namespace GamesCrane.View
                     appWindow.Move(CenteredPosition);
                 }
             }
+
+            _presenter = appWindow.Presenter as OverlappedPresenter;
+            _presenter.IsResizable = false;
+
         }
 
-        //private void myButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //System.Diagnostics.Process.Start("C:\\Program Files (x86)\\Minecraft Launcher\\MinecraftLauncher.exe");
-        //    var window = new Window();
-        //    window.Content = new TextBlock() { Text = "Hello" };
-        //    window.Activate();
-        //}
     }
 }

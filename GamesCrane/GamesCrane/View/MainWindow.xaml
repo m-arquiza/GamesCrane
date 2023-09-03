@@ -9,17 +9,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="Transparent">
+    <Grid>
         <Grid.DataContext>
             <vm:MainWindowViewModel/>
         </Grid.DataContext>
 
-        <Image Source="/Assets/background_test.png" Stretch="UniformToFill" />
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/background_test.png" Stretch="UniformToFill"/>
+        </Grid.Background>
 
-        <!--<Button x:Name="myButton" Click="myButton_Click">Click Me</Button>-->
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <v:AddGame/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Visibility="{Binding AddGameVis}">
+            <Border CornerRadius="12" BorderBrush="Transparent" BorderThickness="1">
+                <Border CornerRadius="12" BorderBrush="#72b4e7" BorderThickness="8">
+                    <v:AddGame/>
+                </Border>
+            </Border>
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Assets/addgame_test.png"/>
+            </StackPanel.Background>
         </StackPanel>
+
+        <Grid Width="200" Height="263" HorizontalAlignment="Right" VerticalAlignment="Center"
+              Margin="0, 200, 43, 0" Background="#99000000">
+            <Button Command="{Binding AddGameCommand}" Content="Add Game" />
+        </Grid>
     </Grid>
 </Window>

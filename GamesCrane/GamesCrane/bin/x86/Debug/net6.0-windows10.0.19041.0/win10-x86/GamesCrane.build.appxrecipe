@@ -763,6 +763,9 @@
     <AppxPackagedFile Include="C:\Users\Miche\.nuget\packages\microsoft.windowsappsdk\1.4.230822000\runtimes\win10-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\addgame_test.png">
+      <PackagePath>Assets\addgame_test.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\background_test.png">
       <PackagePath>Assets\background_test.png</PackagePath>
     </AppxPackagedFile>
