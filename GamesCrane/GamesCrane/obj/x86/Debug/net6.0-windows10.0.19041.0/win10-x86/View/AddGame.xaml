@@ -13,7 +13,6 @@
     </UserControl.DataContext>
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-
         <Grid x:ConnectionId='2' x:Name="GameInput" Width="500" Height="300">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -24,12 +23,12 @@
                 <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding NewGame.Path}" 
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PathToDisplay}" 
                     HorizontalAlignment="Left" VerticalAlignment="Center" />
             <TextBox x:ConnectionId='3' Grid.Row="0" Grid.Column="1" Name="GamePath"
                      VerticalAlignment="Center" Text="{Binding NewGame.Path, Mode=TwoWay}"/>
         </Grid>
-        <!--<Button Command="{Binding SendCommand}" Content="Send" />-->
+        <Button Command="{Binding DisplayGameCommand}" Content="Display" />
     </StackPanel>
 
 

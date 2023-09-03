@@ -7,30 +7,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using GamesCrane.Model;
+using System.ComponentModel.Design;
+using System.Windows.Input;
+using Microsoft.UI.Xaml;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace GamesCrane.ViewModel
 {
     public class AddGameViewModel : INotifyPropertyChanged
     {
         private AddGameModel _newGame;
+        private String _pathToDisplay;
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public AddGameViewModel()
         {
             NewGame = new AddGameModel();
+
+            DisplayGameCommand = new RelayCommand(setDisplay);
         }
 
         public AddGameModel NewGame
         {
-            get
-            {
-                Debug.WriteLine("inside get");
-                return _newGame;
-            }
+            get { return _newGame; }
             set
             {
-                Debug.WriteLine("inside set");
-
                 if (_newGame != value)
                 {
                     _newGame = value;
@@ -38,9 +40,29 @@ namespace GamesCrane.ViewModel
                 }
             }
         }
+
+        public String PathToDisplay
+        {
+            get { return _pathToDisplay; }
+            set
+            {
+                if (_pathToDisplay != value)
+                {
+                    _pathToDisplay = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public ICommand DisplayGameCommand { protected set; get; }
+            
+        private void setDisplay()
+        {
+            PathToDisplay = _newGame.Path;
+        }
+
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            // Raise the PropertyChanged event, passing the name of the property whose value has changed.
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 

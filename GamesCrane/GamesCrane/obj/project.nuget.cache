@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TZ6102lmfDy4opaCMe/K90lShiXHz0yvBDug6XPUB9iyoZzwsX8oV+4KofROQ1fqVbrMyBXY/ibUog1icrnFdg==",
+  "dgSpecHash": "hmNiX5onKcdyk0CttSUcRleJo3lFTnzFnZY6/CF2JAmzspj0AQcfQAoQJ9/hq0T6DyeP8SJvGml+WN9JjxZUAA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Miche\\source\\repos\\m-arquiza\\GamesCrane\\GamesCrane\\GamesCrane\\GamesCrane.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Miche\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.1\\communitytoolkit.mvvm.8.2.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\Miche\\.nuget\\packages\\microsoft.windowsappsdk\\1.4.230822000\\microsoft.windowsappsdk.1.4.230822000.nupkg.sha512",
     "C:\\Users\\Miche\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.18\\microsoft.netcore.app.runtime.win-x86.6.0.18.nupkg.sha512",
