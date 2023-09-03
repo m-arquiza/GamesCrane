@@ -31,8 +31,21 @@
         </StackPanel>
 
         <Grid Width="200" Height="263" HorizontalAlignment="Right" VerticalAlignment="Center"
-              Margin="0, 200, 43, 0" Background="#99000000">
-            <Button Command="{Binding AddGameCommand}" Content="Add Game" />
+              Margin="0, 200, 43, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AddGameCommand}"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Button Grid.Row="2" Grid.Column="0" Content="Play"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
         </Grid>
     </Grid>
 </Window>
