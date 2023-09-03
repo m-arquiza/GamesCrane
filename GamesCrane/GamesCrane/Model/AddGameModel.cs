@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace GamesCrane.Model
 {
+    /*  Models logic and information stored by the AddGame component.
+    */
     public class AddGameModel : INotifyPropertyChanged
     {
         private string _path;
 
+        // Refers to path to the roof of the game to be launched
         public string Path
         {
             get { return _path; }

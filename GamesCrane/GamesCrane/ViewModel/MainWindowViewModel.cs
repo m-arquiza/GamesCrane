@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace GamesCrane.ViewModel
 {
+    /*  Contains controlls for interacting with the Main Window.
+    */
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -16,22 +18,6 @@ namespace GamesCrane.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        //private bool _clicked;
-        //public bool Clicked
-        //{
-        //    get
-        //    {
-        //        return _clicked;
-        //    }
-        //    set
-        //    {
-        //        if (_clicked != value)
-        //        {
-        //            _clicked = value;
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
 
     }
 }

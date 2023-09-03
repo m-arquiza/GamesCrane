@@ -15,6 +15,8 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace GamesCrane.ViewModel
 {
+    /*  Contains controlls for interacting with the AddGame component.
+    */
     public class AddGameViewModel : INotifyPropertyChanged
     {
         private AddGameModel _newGame;
@@ -24,10 +26,10 @@ namespace GamesCrane.ViewModel
         public AddGameViewModel()
         {
             NewGame = new AddGameModel();
-
             DisplayGameCommand = new RelayCommand(setDisplay);
         }
 
+        // Updates and stores game information
         public AddGameModel NewGame
         {
             get { return _newGame; }
@@ -41,6 +43,7 @@ namespace GamesCrane.ViewModel
             }
         }
 
+        // Updates and stores game path
         public String PathToDisplay
         {
             get { return _pathToDisplay; }
@@ -54,8 +57,10 @@ namespace GamesCrane.ViewModel
             }
         }
 
+        // Displays inputted path on button click
         public ICommand DisplayGameCommand { protected set; get; }
             
+        // Sets display path to stored user-inputted path
         private void setDisplay()
         {
             PathToDisplay = _newGame.Path;

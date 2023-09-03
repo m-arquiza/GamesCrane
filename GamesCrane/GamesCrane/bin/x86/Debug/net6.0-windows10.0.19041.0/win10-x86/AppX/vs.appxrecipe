@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-03T11:21:33.823</Modified>
+      <Modified>2023-09-03T21:35:27.279</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
