@@ -26,6 +26,8 @@ namespace GamesCrane
     /// </summary>
     public partial class App : Application
     {
+        public static Frame RootFrame { get; private set; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -41,8 +43,23 @@ namespace GamesCrane
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new View.MainWindow();
+            m_window = new MainWindow();
+
+            Frame rootFrame = new Frame();
+            rootFrame.NavigationFailed += OnNavigationFailed;
+
+            RootFrame = rootFrame;
+
+            rootFrame.Navigate(typeof(View.EditPage), args.Arguments);
+            rootFrame.Navigate(typeof(View.MainPage), args.Arguments);
+
+            m_window.Content = rootFrame;
             m_window.Activate();
+        }
+
+        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
         private Window m_window;

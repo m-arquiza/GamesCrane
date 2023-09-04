@@ -1,3 +1,4 @@
 App.xbf
-View\AddGame.xbf
-View\MainWindow.xbf
+MainWindow.xbf
+View\EditPage.xbf
+View\MainPage.xbf

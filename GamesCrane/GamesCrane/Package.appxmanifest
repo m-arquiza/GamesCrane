@@ -8,11 +8,11 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="42377768-ac51-4989-98bd-d90bfe6af84b"
+    Name="57928d93-e3ee-4649-a8db-799c69ee4d1c"
     Publisher="CN=Miche"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="42377768-ac51-4989-98bd-d90bfe6af84b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="57928d93-e3ee-4649-a8db-799c69ee4d1c" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>GamesCrane</DisplayName>
