@@ -12,11 +12,23 @@
     <Grid>
         <Image Source="/Assets/EditPageBackground.png" Stretch="UniformToFill" />
 
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
-               Padding="40" Background="Transparent">
+        <Grid Width="470" Height="410" Background="Transparent">
             <Border CornerRadius="12" BorderBrush="#72b4e7" BorderThickness="8">
-                    <Grid Width="460" Height="260" Background="Transparent" Margin="-5, -7, -5, 0">
+                <Grid Width="460" Height="400" Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="12*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="4*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.RowSpan="5" Source="/Assets/EditMenuBackground.png" Stretch="UniformToFill" />
+
+                    <Grid Height="60"  Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
@@ -24,26 +36,21 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*" />
                             <ColumnDefinition Width="12*" />
-                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Image Grid.ColumnSpan="3" Source="/Assets/EditMenuBackground.png" Stretch="UniformToFill" />
 
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Title"
-                         HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
                         <TextBox x:ConnectionId='2' Grid.Row="0" Grid.Column="1" Name="TitleBox"
-                         VerticalAlignment="Center" Text="{Binding GameTitle, Mode=TwoWay}" />
-                        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                        Command="{Binding NavigateToPageCommand}" Content="Go"/>
+                                 VerticalAlignment="Center" Text="{Binding GameTitle, Mode=TwoWay}" />
                     </Grid>
-            <!--</Border>-->
-        </Border>
-                </StackPanel>
 
-
-
-
-
+                    <Button Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50"
+                        Command="{Binding NavigateToPageCommand}" Content="Go" Margin="0,0,30,10" />
+                </Grid>
+            </Border>
+        </Grid>
     </Grid>
 </Page>
 
