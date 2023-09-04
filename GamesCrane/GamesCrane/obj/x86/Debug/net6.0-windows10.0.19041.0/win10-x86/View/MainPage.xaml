@@ -7,11 +7,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     NavigationCacheMode="Enabled">
 
     <Grid>
-        <Image Source="/Assets/background_test.png" Stretch="UniformToFill" />
+        <Image Source="/Assets/MainPageBackground.png" Stretch="UniformToFill" />
 
         <Grid Width="200" Height="263" HorizontalAlignment="Right" VerticalAlignment="Center"
               Margin="0, 230, 44 , 0">
@@ -27,7 +27,7 @@
             <Button Grid.Row="0" Grid.Column="0" Command="{Binding NavigateToPageCommand}"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 
-            <TextBlock  Grid.Row="1" Grid.Column="0" Text="nothing yet" />
+            <!--<TextBlock  Grid.Row="1" Grid.Column="0" Text="nothing yet" />-->
 
 
             <Button Grid.Row="2" Grid.Column="0" Content="Play"

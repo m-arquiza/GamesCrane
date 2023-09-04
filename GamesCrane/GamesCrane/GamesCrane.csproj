@@ -12,10 +12,8 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <Content Remove="Assets\addgame_test.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Assets\background_test.png" />
+    <None Remove="Assets\EditMenuBackground.png" />
+    <None Remove="Assets\MainBackground.png" />
     <None Remove="View\EditPage.xaml" />
     <None Remove="View\MainPage.xaml" />
   </ItemGroup>
@@ -46,7 +44,7 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Assets\background_test.png">
+    <Content Update="Assets\MainBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -46,6 +46,21 @@ namespace GamesCrane.ViewModel
             }
         }
 
+        private string _gameTitle;
+
+        public string GameTitle
+        {
+            get { return _gameTitle; }
+            set
+            {
+                if (_gameTitle != value)
+                {
+                    _gameTitle = value;
+                    OnPropertyChanged(nameof(GameTitle));
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
