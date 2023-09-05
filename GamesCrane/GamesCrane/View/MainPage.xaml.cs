@@ -29,17 +29,12 @@ namespace GamesCrane.View
             DataContext = viewModel;
         }
 
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    if (e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
-        //    {
-        //        greet.Text = $"Hello, {e.Parameter.ToString()}";
-        //    }
-        //    else
-        //    {
-        //        greet.Text = "Hello!";
-        //    }
-        //    base.OnNavigatedTo(e);
-        //}
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is Dictionary<string, string>)
+            {
+                viewModel.NewGame = (Dictionary<string, string>) e.Parameter;
+            }
+        }
     }
 }

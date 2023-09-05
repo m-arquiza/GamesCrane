@@ -9,14 +9,21 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
+using GamesCrane.Services;
+using Windows.Storage;
+using Microsoft.UI.Xaml.Media.Imaging;
+using System.Diagnostics;
 
 namespace GamesCrane.ViewModel
 {
     public class EditViewModel
     {
         private readonly NavigationService _navigationService;
-
         public ICommand NavigateToPageCommand { get; }
+
+        private string _gameTitle;
+        private string _gamePath;
+        private string _gameImagePath;
 
         public EditViewModel()
         {
@@ -27,26 +34,13 @@ namespace GamesCrane.ViewModel
 
         private void NavigateToPage()
         {
-            // Pass the data (e.g., Name) as a parameter when navigating
-            _navigationService.Navigate(typeof(MainPage), DataToPass);
+            Dictionary<string, string> newGame = new Dictionary<string, string>();
+            newGame.Add("title", _gameTitle);
+            newGame.Add("path", _gamePath);
+            newGame.Add("image", _gameImagePath);
+            _navigationService.Navigate(typeof(MainPage), newGame);
         }
 
-        private string _dataToPass;
-
-        public string DataToPass
-        {
-            get { return _dataToPass; }
-            set
-            {
-                if (_dataToPass != value)
-                {
-                    _dataToPass = value;
-                    OnPropertyChanged(nameof(DataToPass));
-                }
-            }
-        }
-
-        private string _gameTitle;
 
         public string GameTitle
         {
@@ -57,6 +51,32 @@ namespace GamesCrane.ViewModel
                 {
                     _gameTitle = value;
                     OnPropertyChanged(nameof(GameTitle));
+                }
+            }
+        }
+
+        public string GamePath
+        {
+            get { return _gamePath; }
+            set
+            {
+                if (_gamePath != value)
+                {
+                    _gamePath = value;
+                    OnPropertyChanged(nameof(GamePath));
+                }
+            }
+        }
+
+        public string GameImagePath
+        {
+            get { return _gameImagePath; }
+            set
+            {
+                if (_gameImagePath != value)
+                {
+                    _gameImagePath = value;
+                    OnPropertyChanged(nameof(_gameImagePath));
                 }
             }
         }

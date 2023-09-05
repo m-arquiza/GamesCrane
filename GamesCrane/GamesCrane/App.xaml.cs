@@ -63,5 +63,8 @@ namespace GamesCrane
         }
 
         private Window m_window;
+
+        public Window windowReference { get { return m_window; } }
+
     }
 }

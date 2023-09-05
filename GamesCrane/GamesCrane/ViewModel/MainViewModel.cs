@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Linq;
 using CommunityToolkit.Mvvm.Input;
+using GamesCrane.Services;
 using GamesCrane.View;
 using Microsoft.UI.Xaml.Controls;
 
@@ -15,8 +16,9 @@ namespace GamesCrane.ViewModel
     public class MainViewModel
     {
         private readonly NavigationService _navigationService;
-
         public ICommand NavigateToPageCommand { get; }
+
+        private Dictionary<string, string> _newGame;
 
         public MainViewModel()
         {
@@ -27,21 +29,19 @@ namespace GamesCrane.ViewModel
 
         private void NavigateToPage()
         {
-            // Pass the data (e.g., Name) as a parameter when navigating
-            _navigationService.Navigate(typeof(EditPage), DataToPass);
+            _navigationService.Navigate(typeof(EditPage));
         }
 
-        private string _dataToPass;
 
-        public string DataToPass
+        public Dictionary<string, string> NewGame
         {
-            get { return _dataToPass; }
+            get { return _newGame; }
             set
             {
-                if (_dataToPass != value)
+                if (_newGame != value)
                 {
-                    _dataToPass = value;
-                    OnPropertyChanged(nameof(DataToPass));
+                    _newGame = value;
+                    OnPropertyChanged(nameof(_newGame));
                 }
             }
         }

@@ -26,7 +26,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.RowSpan="5" Source="/Assets/EditMenuBackground.png" Stretch="UniformToFill" />
+                    <Image Grid.RowSpan="6" Source="/Assets/AddMenuBackground.png" Stretch="UniformToFill" />
 
                     <Grid Height="60"  Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -40,10 +40,55 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Title"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Title" Margin="0, 0, 10, 0"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        
                         <TextBox Grid.Row="0" Grid.Column="1" Name="TitleBox"
                                  VerticalAlignment="Center" Text="{Binding GameTitle, Mode=TwoWay}" />
+                    </Grid>
+
+                    <Grid Height="60"  Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="12*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Path" Margin="0, 0, 10, 0"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="PathBox"
+                                 VerticalAlignment="Center" Text="{Binding GamePath, Mode=TwoWay}" />
+                    </Grid>
+
+                    <Grid Height="60"  Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Image" Margin="0, 0, 10, 0"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+
+                        <Image Grid.Row="0" Grid.Column="1" Name="SelectedImage" VerticalAlignment="Center"
+                                Source="/Assets/StarsNoEdge.png"/>
+
+                        <Button Grid.Row="0" Grid.Column="2" Name="ImageSelectButton" 
+                                VerticalAlignment="Center" HorizontalAlignment="Left"
+                                Click="SelectImage" Content="Select Image" />
+                        
                     </Grid>
 
                     <Button Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50"
