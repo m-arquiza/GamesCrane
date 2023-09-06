@@ -19,20 +19,20 @@ namespace GamesCrane.ViewModel
     public class EditViewModel
     {
         private readonly NavigationService _navigationService;
-        public ICommand NavigateToPageCommand { get; }
 
         private string _gameTitle;
         private string _gamePath;
         private string _gameImagePath;
-
         public EditViewModel()
         {
             Frame frame = App.RootFrame;
             _navigationService = new NavigationService(frame);
-            NavigateToPageCommand = new RelayCommand(NavigateToPage);
+
+            _gameTitle = "Untitled Game";
+            _gameImagePath = "ms-appx:///Assets/StarsBorder.png";
         }
 
-        private void NavigateToPage()
+        public void SendDetails()
         {
             Dictionary<string, object> newGame = new Dictionary<string, object>();
             newGame.Add("title", _gameTitle);
@@ -80,6 +80,7 @@ namespace GamesCrane.ViewModel
                 }
             }
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

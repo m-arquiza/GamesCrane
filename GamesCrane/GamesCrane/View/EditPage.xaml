@@ -49,6 +49,7 @@
 
                     <Grid Height="60"  Grid.Row="2">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="6*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
@@ -62,37 +63,46 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Path" Margin="0, 0, 10, 0"
                                    HorizontalAlignment="Right" VerticalAlignment="Center" />
 
-                        <TextBox Grid.Row="0" Grid.Column="1" Name="PathBox"
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="PathBox" TextChanged="EnableAdd"
                                  VerticalAlignment="Center" Text="{Binding GamePath, Mode=TwoWay}" />
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="* Required" Margin="0, -18, 10, 0" Foreground="#9c1919" 
+                                   HorizontalAlignment="Right" VerticalAlignment="Top" FontStyle="Italic"/>
                     </Grid>
 
-                    <Grid Height="60"  Grid.Row="3">
+                    <Grid Height="100"  Grid.Row="3" Margin="0, -40, 0, 0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="180" />
                         </Grid.ColumnDefinitions>
 
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Image" Margin="0, 0, 10, 0"
-                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Image" Margin="10, 0, 0, 0"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-                        <Image Grid.Row="0" Grid.Column="1" Name="SelectedImage" VerticalAlignment="Center"
-                                Source="/Assets/StarsNoEdge.png"/>
+                        <Image Name="SelectedImage" VerticalAlignment="Center" Width="50" 
+                               Grid.Row="0" Grid.Column="1" Source="/Assets/StarsNoEdge.png"/>
 
-                        <Button Grid.Row="0" Grid.Column="2" Name="ImageSelectButton" 
+                        <Button Grid.Row="0" Grid.Column="2" Name="SelectImageButton" 
                                 VerticalAlignment="Center" HorizontalAlignment="Left"
-                                Click="SelectImage" Content="Select Image" />
-                        
+                                Height="29" Margin="-5, 0, 10, 0"
+                                Click="SelectImage" Content="Choose File" />
+
+                        <TextBlock Name="SelectedImagePath" Grid.Row="0" Grid.Column="3" 
+                                   TextTrimming="CharacterEllipsis" Margin="-16, 0, 10, 0"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
+
                     </Grid>
 
-                    <Button Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50"
-                        Command="{Binding NavigateToPageCommand}" Content="Go" Margin="0,0,30,10" />
+                    <Button Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50" 
+                            Margin="0,0,30,10" Click="CheckDetails" Content="Add Game" 
+                            x:Name="SendDetailsButton" IsEnabled="false"/>
                 </Grid>
             </Border>
         </Grid>

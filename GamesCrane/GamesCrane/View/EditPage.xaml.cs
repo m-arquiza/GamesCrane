@@ -18,12 +18,14 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using System.ComponentModel;
 using GamesCrane.Services;
 using Windows.Storage;
+using Windows.UI.Popups;
 
 namespace GamesCrane.View
 {
     public sealed partial class EditPage : Page
     {
         private EditViewModel viewModel;
+        private Window m_window;
         private readonly ImageSelectionService _imageselectService;
 
         public EditPage()
@@ -31,6 +33,12 @@ namespace GamesCrane.View
             this.InitializeComponent();
             viewModel = new EditViewModel();
             DataContext = viewModel;
+
+
+            var appInstance = App.Current as App;
+            //var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(appInstance.windowReference);
+            m_window = appInstance.windowReference;
+
 
             _imageselectService = new ImageSelectionService();
 
@@ -47,16 +55,49 @@ namespace GamesCrane.View
             {
                 Console.WriteLine($"An exception occurred: {ex.Message}");
             }
-
-            string selectedImage = (_imageselectService.ImageSelected).Path;
-            if (selectedImage != null)
+            StorageFile image = _imageselectService.ImageSelected;
+            if (image != null)
             {
-                var bitmapImage = new BitmapImage();
-                bitmapImage.UriSource = new Uri(selectedImage);
-                SelectedImage.Source = bitmapImage;
+                string selectedImage = image.Path;
+                if (selectedImage != null)
+                {
+                    var bitmapImage = new BitmapImage();
+                    bitmapImage.UriSource = new Uri(selectedImage);
+                    SelectedImage.Source = bitmapImage;
 
-                viewModel.GameImagePath = selectedImage;
+                    viewModel.GameImagePath = selectedImage;
+                    SelectedImagePath.Text = selectedImage;
+                }
             }
+        }
+
+        private void EnableAdd(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox) sender;
+            SendDetailsButton.IsEnabled = !string.IsNullOrEmpty(textBox.Text);
+        }
+
+        private async void CheckDetails(object sender, RoutedEventArgs e)
+        {
+            if((viewModel.GameTitle).Equals("Untitled Game") | 
+                (viewModel.GameImagePath).Equals("ms-appx:///Assets/StarsBorder.png"))
+            {
+                AddGameDetailsContentDialog dialog = new AddGameDetailsContentDialog();
+                if (m_window.Content is FrameworkElement fe)
+                {
+                    dialog.XamlRoot = fe.XamlRoot;
+                }
+                ContentDialogResult result = await dialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    viewModel.SendDetails();
+                }
+            } else
+            {
+                viewModel.SendDetails();
+            }
+
         }
     }
 }

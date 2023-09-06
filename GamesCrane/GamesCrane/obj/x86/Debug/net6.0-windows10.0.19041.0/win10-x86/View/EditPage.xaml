@@ -43,12 +43,13 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Title" Margin="0, 0, 10, 0"
                                    HorizontalAlignment="Right" VerticalAlignment="Center" />
                         
-                        <TextBox x:ConnectionId='5' Grid.Row="0" Grid.Column="1" Name="TitleBox"
+                        <TextBox x:ConnectionId='7' Grid.Row="0" Grid.Column="1" Name="TitleBox"
                                  VerticalAlignment="Center" Text="{Binding GameTitle, Mode=TwoWay}" />
                     </Grid>
 
                     <Grid Height="60"  Grid.Row="2">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="6*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
@@ -62,37 +63,46 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Path" Margin="0, 0, 10, 0"
                                    HorizontalAlignment="Right" VerticalAlignment="Center" />
 
-                        <TextBox x:ConnectionId='4' Grid.Row="0" Grid.Column="1" Name="PathBox"
+                        <TextBox x:ConnectionId='6' Grid.Row="0" Grid.Column="1" Name="PathBox"                        
                                  VerticalAlignment="Center" Text="{Binding GamePath, Mode=TwoWay}" />
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="* Required" Margin="0, -18, 10, 0" Foreground="#9c1919" 
+                                   HorizontalAlignment="Right" VerticalAlignment="Top" FontStyle="Italic"/>
                     </Grid>
 
-                    <Grid Height="60"  Grid.Row="3">
+                    <Grid Height="100"  Grid.Row="3" Margin="0, -40, 0, 0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="180" />
                         </Grid.ColumnDefinitions>
 
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Image" Margin="0, 0, 10, 0"
-                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Image" Margin="10, 0, 0, 0"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-                        <Image x:ConnectionId='2' Grid.Row="0" Grid.Column="1" Name="SelectedImage" VerticalAlignment="Center"
-                                Source="/Assets/StarsNoEdge.png"/>
+                        <Image x:ConnectionId='3' Name="SelectedImage" VerticalAlignment="Center" Width="50" 
+                               Grid.Row="0" Grid.Column="1" Source="/Assets/StarsNoEdge.png"/>
 
-                        <Button x:ConnectionId='3' Grid.Row="0" Grid.Column="2" Name="ImageSelectButton" 
+                        <Button x:ConnectionId='4' Grid.Row="0" Grid.Column="2" Name="SelectImageButton" 
                                 VerticalAlignment="Center" HorizontalAlignment="Left"
-                                                    Content="Select Image" />
-                        
+                                Height="29" Margin="-5, 0, 10, 0"
+                                                    Content="Choose File" />
+
+                        <TextBlock x:ConnectionId='5' Name="SelectedImagePath" Grid.Row="0" Grid.Column="3" 
+                                   TextTrimming="CharacterEllipsis" Margin="-16, 0, 10, 0"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
+
                     </Grid>
 
-                    <Button Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50"
-                        Command="{Binding NavigateToPageCommand}" Content="Go" Margin="0,0,30,10" />
+                    <Button x:ConnectionId='2' Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50" 
+                            Margin="0,0,30,10"                      Content="Add Game" 
+                            x:Name="SendDetailsButton" IsEnabled="false"/>
                 </Grid>
             </Border>
         </Grid>

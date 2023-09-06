@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -68,21 +69,25 @@ namespace GamesCrane.View
             if (sender is Image clickedImage)
             {
                 string imageName = clickedImage.Name;
-                string path = viewModel.HandleGameTap(imageName);
+                Dictionary<string, object> game = viewModel.HandleGameTap(imageName);
 
                 var bitmapImage = new BitmapImage();
-                bitmapImage.UriSource = new Uri(path);
+                bitmapImage.UriSource = new Uri((string)game["image"]);
 
-                Image vendImage = (Image)FindName("GameSelected");
+                Image vendImage = (Image)FindName("GameSelectedImage");
                 vendImage.Source = bitmapImage;
+
+                TextBlock vendTitle = (TextBlock)FindName("GameSelectedTitle");
+                vendTitle.Text = (string)game["title"];
 
             }
         }
 
-        private void Game_DoubleTapped(object sender, TappedRoutedEventArgs e)
+        private void Game_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            Game_Tapped(sender, e);
+            Console.WriteLine("Working on it!");
         }
+
 
     }
 

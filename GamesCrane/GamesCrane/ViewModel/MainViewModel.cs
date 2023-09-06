@@ -110,15 +110,14 @@ namespace GamesCrane.ViewModel
         }
 
 
-        public string HandleGameTap(string imageName)
+        public Dictionary<string, object> HandleGameTap(string imageName)
         {
             int gameNum = int.Parse(imageName.Where(Char.IsDigit).ToArray());
             int[] vendNum = GameIndex(gameNum);
-            string imagePath = (string) Games[vendNum[0], vendNum[1]]["image"];
+            Dictionary<string, object> game = Games[vendNum[0], vendNum[1]];
 
-            return imagePath;
+            return game;
         }
-
 
         public ICommand NavigateToPageCommand { get; }
         private void NavigateToPage()
