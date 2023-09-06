@@ -17,17 +17,23 @@ namespace GamesCrane.ViewModel
     public class MainViewModel
     {
         private readonly NavigationService _navigationService;
+        public ICommand NavigateToPageCommand { get; }
+        public ICommand GameStartupCommand { get; }
 
         private Dictionary<string, object> _newGame;
+        private Dictionary<string, object> _vendedGame;
         private Dictionary<string, object>[,] _games;
         private int _gamesCount;
         public MainViewModel()
         {
             Frame frame = App.RootFrame;
             _navigationService = new NavigationService(frame);
+
             NavigateToPageCommand = new RelayCommand(NavigateToPage);
+            GameStartupCommand = new RelayCommand(GameLaunch);
 
             _newGame = new Dictionary<string, object>();
+            _vendedGame = new Dictionary<string, object>();
             _games = new Dictionary<string, object>[3, 5];
             _gamesCount = 0;
         }
@@ -48,6 +54,19 @@ namespace GamesCrane.ViewModel
                     OnPropertyChanged(nameof(_newGame));
 
                     GameAdded(_newGame);
+                }
+            }
+        }
+        public Dictionary<string, object> VendedGame
+        {
+            get { return _vendedGame; }
+            set
+            {
+                if (_vendedGame != value)
+                {
+                    _vendedGame = value;
+
+                    OnPropertyChanged(nameof(VendedGame));
                 }
             }
         }
@@ -110,7 +129,7 @@ namespace GamesCrane.ViewModel
         }
 
 
-        public Dictionary<string, object> HandleGameTap(string imageName)
+        public Dictionary<string, object> GetGame(string imageName)
         {
             int gameNum = int.Parse(imageName.Where(Char.IsDigit).ToArray());
             int[] vendNum = GameIndex(gameNum);
@@ -119,7 +138,11 @@ namespace GamesCrane.ViewModel
             return game;
         }
 
-        public ICommand NavigateToPageCommand { get; }
+        private void GameLaunch()
+        {
+            System.Diagnostics.Process.Start((string) VendedGame["path"]);
+        }
+
         private void NavigateToPage()
         {
             _navigationService.Navigate(typeof(EditPage));

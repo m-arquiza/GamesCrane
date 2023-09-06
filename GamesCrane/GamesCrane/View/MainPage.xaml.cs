@@ -69,7 +69,8 @@ namespace GamesCrane.View
             if (sender is Image clickedImage)
             {
                 string imageName = clickedImage.Name;
-                Dictionary<string, object> game = viewModel.HandleGameTap(imageName);
+                Dictionary<string, object> game = viewModel.GetGame(imageName);
+                viewModel.VendedGame = new Dictionary<string, object>(game);
 
                 var bitmapImage = new BitmapImage();
                 bitmapImage.UriSource = new Uri((string)game["image"]);
@@ -87,7 +88,6 @@ namespace GamesCrane.View
         {
             Console.WriteLine("Working on it!");
         }
-
 
     }
 

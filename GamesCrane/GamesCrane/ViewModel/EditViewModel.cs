@@ -20,6 +20,8 @@ namespace GamesCrane.ViewModel
     {
         private readonly NavigationService _navigationService;
 
+        public ICommand ReturnToMainScreen { get; }
+
         private string _gameTitle;
         private string _gamePath;
         private string _gameImagePath;
@@ -27,6 +29,8 @@ namespace GamesCrane.ViewModel
         {
             Frame frame = App.RootFrame;
             _navigationService = new NavigationService(frame);
+
+            ReturnToMainScreen = new RelayCommand(GoBack);
 
             _gameTitle = "Untitled Game";
             _gameImagePath = "ms-appx:///Assets/StarsBorder.png";
@@ -41,6 +45,10 @@ namespace GamesCrane.ViewModel
             _navigationService.Navigate(typeof(MainPage), newGame);
         }
 
+        public void GoBack()
+        {
+            _navigationService.Navigate(typeof(MainPage));
+        }
 
         public string GameTitle
         {

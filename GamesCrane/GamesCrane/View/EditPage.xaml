@@ -16,11 +16,11 @@
             <Border CornerRadius="12" BorderBrush="#72b4e7" BorderThickness="8">
                 <Grid Width="460" Height="400" Background="Transparent">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="12*" />
-                        <RowDefinition Height="8*" />
-                        <RowDefinition Height="8*" />
-                        <RowDefinition Height="8*" />
-                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="80" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
@@ -47,7 +47,7 @@
                                  VerticalAlignment="Center" Text="{Binding GameTitle, Mode=TwoWay}" />
                     </Grid>
 
-                    <Grid Height="60"  Grid.Row="2">
+                    <Grid Height="65"  Grid.Row="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*" />
                             <RowDefinition Height="*" />
@@ -68,9 +68,12 @@
 
                         <TextBlock Grid.Row="1" Grid.Column="0" Text="* Required" Margin="0, -18, 10, 0" Foreground="#9c1919" 
                                    HorizontalAlignment="Right" VerticalAlignment="Top" FontStyle="Italic"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="Please include the .exe in your path." 
+                                   Margin="0, -10, 10, 0" Foreground="#2a475e" 
+                                   HorizontalAlignment="Left" VerticalAlignment="Top" FontStyle="Italic"/>
                     </Grid>
 
-                    <Grid Height="100"  Grid.Row="3" Margin="0, -40, 0, 0">
+                    <Grid Height="100"  Grid.Row="3" Margin="0, -30, 0, 0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
@@ -100,9 +103,22 @@
 
                     </Grid>
 
-                    <Button Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50" 
-                            Margin="0,0,30,10" Click="CheckDetails" Content="Add Game" 
-                            x:Name="SendDetailsButton" IsEnabled="false"/>
+                    <StackPanel Orientation="Vertical" Grid.Row="5" Margin="0, -20, 0, 0" Width="400">
+                        <TextBlock Text="Stuck on getting program path? This PC -> C: -> Program Files is a good start!" 
+                                   Margin="0, -10, 0, 0" Foreground="#2a475e"  TextWrapping="WrapWholeWords"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" FontStyle="Italic"/>
+                        <StackPanel Orientation="Horizontal" Width="400">
+                            <Button HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" 
+                                Margin="30,0,0,10" Command="{Binding ReturnToMainScreen}" Content="Cancel" 
+                                x:Name="BackButton"/>
+                            <Button HorizontalAlignment="Right" VerticalAlignment="Center" Width="50" 
+                                Margin="0,0,30,10" Click="CheckDetails" Content="Add Game" 
+                                x:Name="SendDetailsButton" IsEnabled="false"/>
+                        </StackPanel>
+
+
+                     </StackPanel>
+
                 </Grid>
             </Border>
         </Grid>
