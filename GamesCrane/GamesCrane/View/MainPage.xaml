@@ -33,24 +33,43 @@
             </Grid.ColumnDefinitions>
 
 
-            <Image Source="/Assets/NothingYet.png" Grid.Row="0" Grid.Column="0" />
-            <Image Source="/Assets/NothingYet.png" Grid.Row="0" Grid.Column="1"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="0" Grid.Column="2"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="0" Grid.Column="3"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="0" Grid.Column="4"/>
+            <Image x:Name="GameImage1" Grid.Row="0" Grid.Column="0" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage2" Grid.Row="0" Grid.Column="1" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage3" Grid.Row="0" Grid.Column="2" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage4" Grid.Row="0" Grid.Column="3" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage5" Grid.Row="0" Grid.Column="4" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
 
+            <Image x:Name="GameImage6" Grid.Row="2" Grid.Column="0" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage7" Grid.Row="2" Grid.Column="1" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage8" Grid.Row="2" Grid.Column="2" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage9" Grid.Row="2" Grid.Column="3" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage10" Grid.Row="2" Grid.Column="4" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
 
-            <Image Source="/Assets/NothingYet.png" Grid.Row="2" Grid.Column="0"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="2" Grid.Column="1"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="2" Grid.Column="2"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="2" Grid.Column="3"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="2" Grid.Column="4"/>
+            <Image x:Name="GameImage11" Grid.Row="4" Grid.Column="0" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage12" Grid.Row="4" Grid.Column="1" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage13" Grid.Row="4" Grid.Column="2" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage14" Grid.Row="4" Grid.Column="3" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+            <Image x:Name="GameImage15" Grid.Row="4" Grid.Column="4" Margin="10"
+                   Tapped="Game_Tapped" DoubleTapped="Game_DoubleTapped"/>
+        </Grid>
 
-            <Image Source="/Assets/NothingYet.png" Grid.Row="4" Grid.Column="0"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="4" Grid.Column="1"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="4" Grid.Column="2"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="4" Grid.Column="3"/>
-            <Image Source="/Assets/NothingYet.png" Grid.Row="4" Grid.Column="4"/>
+        <Grid Width="179" Height="167" HorizontalAlignment="Right" VerticalAlignment="Top"
+              Margin="0, 113, 53 , 0">
+            <Image x:Name="GameSelected" Margin="11"/>
         </Grid>
 
         <Grid Width="200" Height="263" HorizontalAlignment="Right" VerticalAlignment="Center"

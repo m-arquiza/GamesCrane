@@ -34,7 +34,7 @@ namespace GamesCrane.ViewModel
 
         private void NavigateToPage()
         {
-            Dictionary<string, string> newGame = new Dictionary<string, string>();
+            Dictionary<string, object> newGame = new Dictionary<string, object>();
             newGame.Add("title", _gameTitle);
             newGame.Add("path", _gamePath);
             newGame.Add("image", _gameImagePath);

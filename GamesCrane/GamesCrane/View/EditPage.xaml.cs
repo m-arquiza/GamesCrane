@@ -48,14 +48,14 @@ namespace GamesCrane.View
                 Console.WriteLine($"An exception occurred: {ex.Message}");
             }
 
-            string _selectedImage = (_imageselectService.ImageSelected).Path;
-            if (_selectedImage != null)
+            string selectedImage = (_imageselectService.ImageSelected).Path;
+            if (selectedImage != null)
             {
                 var bitmapImage = new BitmapImage();
-                bitmapImage.UriSource = new Uri(_selectedImage);
+                bitmapImage.UriSource = new Uri(selectedImage);
                 SelectedImage.Source = bitmapImage;
 
-                viewModel.GameImagePath = _selectedImage;
+                viewModel.GameImagePath = selectedImage;
             }
         }
     }
