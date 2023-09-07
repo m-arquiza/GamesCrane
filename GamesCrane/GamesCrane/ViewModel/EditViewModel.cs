@@ -13,6 +13,7 @@ using GamesCrane.Services;
 using Windows.Storage;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Diagnostics;
+using GamesCrane.Model;
 
 namespace GamesCrane.ViewModel
 {
@@ -20,11 +21,9 @@ namespace GamesCrane.ViewModel
     {
         private readonly NavigationService _navigationService;
 
+        private Game NewGame;
         public ICommand ReturnToMainScreen { get; }
 
-        private string _gameTitle;
-        private string _gamePath;
-        private string _gameImagePath;
         public EditViewModel()
         {
             Frame frame = App.RootFrame;
@@ -32,17 +31,15 @@ namespace GamesCrane.ViewModel
 
             ReturnToMainScreen = new RelayCommand(GoBack);
 
-            _gameTitle = "Untitled Game";
-            _gameImagePath = "ms-appx:///Assets/StarsBorder.png";
+            NewGame = new Game();
+            NewGame.Title = "Untitled Game";
+            NewGame.ImagePath = "ms-appx:///Assets/StarsBorder.png";
         }
 
         public void SendDetails()
         {
-            Dictionary<string, object> newGame = new Dictionary<string, object>();
-            newGame.Add("title", _gameTitle);
-            newGame.Add("path", _gamePath);
-            newGame.Add("image", _gameImagePath);
-            _navigationService.Navigate(typeof(MainPage), newGame);
+            Game toAdd = new Game(NewGame);
+            _navigationService.Navigate(typeof(MainPage), NewGame);
         }
 
         public void GoBack()
@@ -52,12 +49,12 @@ namespace GamesCrane.ViewModel
 
         public string GameTitle
         {
-            get { return _gameTitle; }
+            get { return NewGame.Title; }
             set
             {
-                if (_gameTitle != value)
+                if (NewGame.Title != value)
                 {
-                    _gameTitle = value;
+                    NewGame.Title = value;
                     OnPropertyChanged(nameof(GameTitle));
                 }
             }
@@ -65,12 +62,12 @@ namespace GamesCrane.ViewModel
 
         public string GamePath
         {
-            get { return _gamePath; }
+            get { return NewGame.Path; }
             set
             {
-                if (_gamePath != value)
+                if (NewGame.Path != value)
                 {
-                    _gamePath = value;
+                    NewGame.Path = value;
                     OnPropertyChanged(nameof(GamePath));
                 }
             }
@@ -78,17 +75,42 @@ namespace GamesCrane.ViewModel
 
         public string GameImagePath
         {
-            get { return _gameImagePath; }
+            get { return NewGame.ImagePath; }
             set
             {
-                if (_gameImagePath != value)
+                if (NewGame.ImagePath != value)
                 {
-                    _gameImagePath = value;
-                    OnPropertyChanged(nameof(_gameImagePath));
+                    NewGame.ImagePath = value;
+                    OnPropertyChanged(nameof(GameImagePath));
                 }
             }
         }
 
+        public Boolean GameNeedsAdmin
+        {
+            get { return NewGame.NeedsAdmin; }
+            set
+            {
+                if (NewGame.NeedsAdmin != value)
+                {
+                    NewGame.NeedsAdmin = value;
+                    OnPropertyChanged(nameof(GameNeedsAdmin));
+                }
+            }
+        }
+
+        public Boolean GamepathHasFlags
+        {
+            get { return NewGame.HasFlags; }
+            set
+            {
+                if (NewGame.HasFlags != value)
+                {
+                    NewGame.HasFlags = value;
+                    OnPropertyChanged(nameof(GamepathHasFlags));
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -11,6 +11,7 @@ using CommunityToolkit.Mvvm.Input;
 using GamesCrane.Services;
 using GamesCrane.View;
 using Microsoft.UI.Xaml.Controls;
+using GamesCrane.Model;
 
 namespace GamesCrane.ViewModel
 {
@@ -20,9 +21,9 @@ namespace GamesCrane.ViewModel
         public ICommand NavigateToPageCommand { get; }
         public ICommand GameStartupCommand { get; }
 
-        private Dictionary<string, object> _newGame;
-        private Dictionary<string, object> _vendedGame;
-        private Dictionary<string, object>[,] _games;
+        private Game _newGame;
+        private Game _vendedGame;
+        private Game[,] _games;
         private int _gamesCount;
         public MainViewModel()
         {
@@ -32,13 +33,13 @@ namespace GamesCrane.ViewModel
             NavigateToPageCommand = new RelayCommand(NavigateToPage);
             GameStartupCommand = new RelayCommand(GameLaunch);
 
-            _newGame = new Dictionary<string, object>();
-            _vendedGame = new Dictionary<string, object>();
-            _games = new Dictionary<string, object>[3, 5];
+            _newGame = new Game();
+            _vendedGame = new Game();
+            _games = new Game[3, 5];
             _gamesCount = 0;
         }
 
-        public Dictionary<string, object> NewGame
+        public Game NewGame
         {
             get { return _newGame; }
             set
@@ -46,8 +47,8 @@ namespace GamesCrane.ViewModel
                 if (_newGame != value)
                 {
                     GamesCount++;
-                    value.Add("numIndex", _gamesCount);
-                    value.Add("vendIndex", GameIndex(_gamesCount));
+                    value.NumIndex = _gamesCount;
+                    value.VendIndex = GameIndex(_gamesCount);
 
                     _newGame = value;
 
@@ -57,7 +58,7 @@ namespace GamesCrane.ViewModel
                 }
             }
         }
-        public Dictionary<string, object> VendedGame
+        public Game VendedGame
         {
             get { return _vendedGame; }
             set
@@ -71,10 +72,10 @@ namespace GamesCrane.ViewModel
             }
         }
 
-        private void GameAdded(Dictionary<string, object> gameToAdd)
+        private void GameAdded(Game gameToAdd)
         {
-            Dictionary<string, object> currGame = new Dictionary<string, object>(gameToAdd);
-            int[] index = (int[]) currGame["vendIndex"];
+            Game currGame = new Game(gameToAdd);
+            int[] index = currGame.VendIndex;
             if (index[0] != -1)
             {
                 _games[index[0], index[1]] = currGame;
@@ -99,7 +100,7 @@ namespace GamesCrane.ViewModel
             }
         }
 
-        public Dictionary<string, object>[,] Games
+        public Game[,] Games
         {
             get { return _games; }
             set
@@ -129,18 +130,18 @@ namespace GamesCrane.ViewModel
         }
 
 
-        public Dictionary<string, object> GetGame(string imageName)
+        public Game GetGame(string imageName)
         {
             int gameNum = int.Parse(imageName.Where(Char.IsDigit).ToArray());
             int[] vendNum = GameIndex(gameNum);
-            Dictionary<string, object> game = Games[vendNum[0], vendNum[1]];
+            Game game = Games[vendNum[0], vendNum[1]];
 
             return game;
         }
 
         private void GameLaunch()
         {
-            System.Diagnostics.Process.Start((string) VendedGame["path"]);
+            System.Diagnostics.Process.Start(VendedGame.Path);
         }
 
         private void NavigateToPage()

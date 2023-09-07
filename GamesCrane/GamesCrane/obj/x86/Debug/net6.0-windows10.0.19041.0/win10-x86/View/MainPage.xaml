@@ -85,10 +85,18 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Row="0" Grid.Column="0" Command="{Binding NavigateToPageCommand}"
-            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Button.Background>
+                    <SolidColorBrush Color="Transparent"/>
+                </Button.Background>
+            </Button>
 
             <Button Grid.Row="2" Grid.Column="0" Command="{Binding GameStartupCommand}"
-            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Button.Background>
+                    <SolidColorBrush Color="Transparent"/>
+                </Button.Background>
+            </Button>
 
         </Grid>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
         

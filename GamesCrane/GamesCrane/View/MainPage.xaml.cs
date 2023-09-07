@@ -17,7 +17,7 @@ using System.Xml.Linq;
 using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-
+using GamesCrane.Model;
 
 namespace GamesCrane.View
 {
@@ -37,16 +37,16 @@ namespace GamesCrane.View
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter is Dictionary<string, object>)
+            if (e.Parameter is Game)
             {
-                viewModel.NewGame = (Dictionary<string, object>) e.Parameter;
+                viewModel.NewGame = (Game) e.Parameter;
                 UpdateImage(viewModel.NewGame);
             }
         }
 
-        public void UpdateImage(Dictionary<string, object> newGame)
+        public void UpdateImage(Game newGame)
         {
-            int picIndex = (int) newGame["numIndex"];
+            int picIndex = newGame.NumIndex;
             string imageName = $"GameImage{picIndex}";
 
             Image image = (Image)FindName(imageName);
@@ -54,7 +54,7 @@ namespace GamesCrane.View
             if (image != null)
             {
                 var bitmapImage = new BitmapImage();
-                bitmapImage.UriSource = new Uri((string)newGame["image"]);
+                bitmapImage.UriSource = new Uri(newGame.ImagePath);
                 image.Source = bitmapImage;
             }
             else
@@ -66,27 +66,33 @@ namespace GamesCrane.View
 
         private void Game_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            Vend(sender);
+        }
+
+        private void Game_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            Vend(sender);
+            viewModel.GameStartupCommand.Execute(null);
+        }
+
+        private void Vend(object sender)
+        {
             if (sender is Image clickedImage)
             {
                 string imageName = clickedImage.Name;
-                Dictionary<string, object> game = viewModel.GetGame(imageName);
-                viewModel.VendedGame = new Dictionary<string, object>(game);
+                Game game = viewModel.GetGame(imageName);
+                viewModel.VendedGame = new Game(game);
 
                 var bitmapImage = new BitmapImage();
-                bitmapImage.UriSource = new Uri((string)game["image"]);
+                bitmapImage.UriSource = new Uri(game.ImagePath);
 
                 Image vendImage = (Image)FindName("GameSelectedImage");
                 vendImage.Source = bitmapImage;
 
                 TextBlock vendTitle = (TextBlock)FindName("GameSelectedTitle");
-                vendTitle.Text = (string)game["title"];
+                vendTitle.Text = game.Title;
 
             }
-        }
-
-        private void Game_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
-        {
-            Console.WriteLine("Working on it!");
         }
 
     }
