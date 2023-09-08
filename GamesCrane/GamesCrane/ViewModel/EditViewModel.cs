@@ -24,9 +24,9 @@ namespace GamesCrane.ViewModel
     public class EditViewModel
     {
         private Window m_window;
-
         private readonly NavigationService _navigationService;
 
+        private string _filePathError;
         private Game NewGame;
         public ICommand ReturnToMainScreenCommand { get; }
         public EditViewModel()
@@ -39,7 +39,7 @@ namespace GamesCrane.ViewModel
             var appInstance = App.Current as App;
             m_window = appInstance.windowReference;
 
-
+            _filePathError = "Unknown";
             NewGame = new Game();
             NewGame.Title = "Untitled Game";
             NewGame.ImagePath = "ms-appx:///Assets/StarsBorder.png";
@@ -82,22 +82,21 @@ namespace GamesCrane.ViewModel
                 {
                     if (filePath.IndexOfAny(Path.GetInvalidPathChars()) == -1)
                     {
-                        Debug.WriteLine("sounds good to me");
                         return true;
                     }
                     else
                     {
-                        Debug.WriteLine("invalid chars");
+                        FilePathErrorDisplayText = "Path includes invalid characters!";
                     }
                 }
                 else
                 {
-                    Debug.WriteLine("doesn't end in exe");
+                    FilePathErrorDisplayText = "File does not end in .exe! Are you missing the executable in the path?";
                 }
             }
             else
             {
-                Debug.WriteLine("file no exist");
+                FilePathErrorDisplayText = "File does not exist! System cannot find the executable based on the given path.";
             }
             return false;
         }
@@ -113,7 +112,18 @@ namespace GamesCrane.ViewModel
             _navigationService.Navigate(typeof(MainPage));
         }
 
-
+        public string FilePathErrorDisplayText
+        {
+            get { return _filePathError; }
+            set
+            {
+                if (_filePathError != value)
+                {
+                    _filePathError = value;
+                    OnPropertyChanged(nameof(FilePathErrorDisplayText));
+                }
+            }
+        }
         public string GameTitle
         {
             get { return NewGame.Title; }

@@ -69,7 +69,13 @@
                                  VerticalAlignment="Center" Text="{Binding GamePath, Mode=TwoWay}">
                             <FlyoutBase.AttachedFlyout>
                                 <Flyout>
-                                    <TextBlock Text="This system cannot run this file! Please enter a valid executable path."  />
+                                    <StackPanel Orientation="Vertical" Width="450">
+                                        <TextBlock Text="This system cannot run this file! Please enter a valid executable path." TextWrapping="Wrap"/>
+                                        <TextBlock TextWrapping="Wrap">
+                                            <Run Text="Error:" FontWeight="Bold"/>
+                                            <Run Text="{Binding FilePathErrorDisplayText}"/>
+                                        </TextBlock>  
+                                    </StackPanel>
                                 </Flyout>
                             </FlyoutBase.AttachedFlyout>
                         </TextBox> 
