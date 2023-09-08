@@ -27,7 +27,6 @@ namespace GamesCrane.View
     public sealed partial class EditPage : Page
     {
         private EditViewModel viewModel;
-        private Window m_window;
         private readonly ImageSelectionService _imageselectService;
 
         public EditPage()
@@ -36,15 +35,7 @@ namespace GamesCrane.View
             viewModel = new EditViewModel();
             DataContext = viewModel;
 
-
-            var appInstance = App.Current as App;
-            //var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(appInstance.windowReference);
-            m_window = appInstance.windowReference;
-
-
             _imageselectService = new ImageSelectionService();
-
-
         }
 
         public async void SelectImage(object sender, RoutedEventArgs e)
@@ -89,68 +80,16 @@ namespace GamesCrane.View
             SendDetailsButton.IsEnabled = !string.IsNullOrEmpty(textBox.Text);
         }
 
-        private async void CheckDetails(object sender, RoutedEventArgs e)
+        private void VerifyAndSend(object sender, RoutedEventArgs e)
         {
-            if (!verifyPath())
+            if (!viewModel.verifyPath())
             {
                 FlyoutBase.ShowAttachedFlyout((FrameworkElement)PathBox);
             }
             else
             {
-                if ((viewModel.GameTitle).Equals("Untitled Game") |
-                    (viewModel.GameImagePath).Equals("ms-appx:///Assets/StarsBorder.png"))
-                {
-                    AddGameDetailsContentDialog dialog = new AddGameDetailsContentDialog();
-                    if (m_window.Content is FrameworkElement fe)
-                    {
-                        dialog.XamlRoot = fe.XamlRoot;
-                    }
-                    ContentDialogResult result = await dialog.ShowAsync();
-
-                    if (result == ContentDialogResult.Primary)
-                    {
-                        viewModel.SendDetails();
-                    }
-                }
-                else
-                {
-                    viewModel.SendDetails();
-                }
+                viewModel.CheckDetails();
             }
-        }
-
-
-            private bool verifyPath()
-            {
-
-            //string programFilesFolder = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            //string filePath = Path.Combine(programFilesFolder, "Minecraft Launcher\\MinecraftLauncher.exe");
-            string filePath = viewModel.GamePath.Trim('"');
-            //if (File.Exists(filePath))
-            //{
-            string fileExtension = Path.GetExtension(filePath);
-                if (string.Equals(fileExtension, ".exe", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (filePath.IndexOfAny(Path.GetInvalidPathChars()) == -1)
-                    {
-                        Debug.WriteLine("all good");
-                        return true;
-                    }
-                    else
-                    {
-                        Debug.WriteLine("invalid chars");
-                    }
-                }
-                else
-                {
-                    Debug.WriteLine("doesn't end in exe");
-                }
-            //}
-            //else
-            //{
-            //    Debug.WriteLine("file no exist");
-            //}
-            return false;
         }
     }
 }

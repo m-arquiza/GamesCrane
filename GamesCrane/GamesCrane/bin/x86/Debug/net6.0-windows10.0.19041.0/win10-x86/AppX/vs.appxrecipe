@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-07T06:28:31.487</Modified>
+      <Modified>2023-09-08T02:41:48.173</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-09-07T06:28:31.135</Modified>
+      <Modified>2023-09-08T02:41:47.882</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.runtimeconfig.json">
       <PackagePath>GamesCrane.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.dll">
       <PackagePath>GamesCrane.dll</PackagePath>
-      <Modified>2023-09-07T06:28:30.979</Modified>
+      <Modified>2023-09-08T02:41:47.718</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>GamesCrane.exe</PackagePath>
-      <Modified>2023-09-07T06:28:30.988</Modified>
+      <Modified>2023-09-08T02:41:47.725</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.deps.json">
       <PackagePath>GamesCrane.deps.json</PackagePath>

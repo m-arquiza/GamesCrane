@@ -14,26 +14,92 @@ using Windows.Storage;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System.Diagnostics;
 using GamesCrane.Model;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml;
+using System.IO;
+
 
 namespace GamesCrane.ViewModel
 {
     public class EditViewModel
     {
+        private Window m_window;
+
         private readonly NavigationService _navigationService;
 
         private Game NewGame;
-        public ICommand ReturnToMainScreen { get; }
-
+        public ICommand ReturnToMainScreenCommand { get; }
         public EditViewModel()
         {
             Frame frame = App.RootFrame;
             _navigationService = new NavigationService(frame);
 
-            ReturnToMainScreen = new RelayCommand(GoBack);
+            ReturnToMainScreenCommand = new RelayCommand(GoBack);
+
+            var appInstance = App.Current as App;
+            m_window = appInstance.windowReference;
+
 
             NewGame = new Game();
             NewGame.Title = "Untitled Game";
             NewGame.ImagePath = "ms-appx:///Assets/StarsBorder.png";
+        }
+
+        public async void CheckDetails()
+        {
+            if (GameTitle.Equals("Untitled Game") |
+                GameImagePath.Equals("ms-appx:///Assets/StarsBorder.png"))
+            {
+                Debug.WriteLine("title or path bad");
+                AddGameDetailsContentDialog dialog = new AddGameDetailsContentDialog();
+                if (m_window.Content is FrameworkElement fe)
+                {
+                    dialog.XamlRoot = fe.XamlRoot;
+                }
+                ContentDialogResult result = await dialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    SendDetails();
+                }
+            }
+            else
+            {
+                Debug.WriteLine("title n path... good");
+                SendDetails();
+            }
+        }
+
+        public bool verifyPath()
+        {
+            //string programFilesFolder = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            //string filePath = Path.Combine(programFilesFolder, "Minecraft Launcher\\MinecraftLauncher.exe");
+            string filePath = GamePath.Trim('"');
+            if (File.Exists(filePath))
+            {
+                string fileExtension = Path.GetExtension(filePath);
+                if (string.Equals(fileExtension, ".exe", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (filePath.IndexOfAny(Path.GetInvalidPathChars()) == -1)
+                    {
+                        Debug.WriteLine("sounds good to me");
+                        return true;
+                    }
+                    else
+                    {
+                        Debug.WriteLine("invalid chars");
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("doesn't end in exe");
+                }
+            }
+            else
+            {
+                Debug.WriteLine("file no exist");
+            }
+            return false;
         }
 
         public void SendDetails()
@@ -46,6 +112,7 @@ namespace GamesCrane.ViewModel
         {
             _navigationService.Navigate(typeof(MainPage));
         }
+
 
         public string GameTitle
         {
