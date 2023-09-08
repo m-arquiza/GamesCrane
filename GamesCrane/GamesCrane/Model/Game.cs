@@ -10,6 +10,7 @@ namespace GamesCrane.Model
     {
         private string _title;
         private string _path;
+        private string _pathFlags;
         private string _imagePath;
 
         private int _numIndex;
@@ -22,6 +23,7 @@ namespace GamesCrane.Model
         {
             _title = "";
             _path = "";
+            _pathFlags = "";
             _imagePath = "";
 
             _numIndex = -2;
@@ -35,6 +37,7 @@ namespace GamesCrane.Model
         {
             _title = other.Title;
             _path = other.Path;
+            _pathFlags = other.PathFlags;
             _imagePath = other.ImagePath;
 
             _numIndex = other.NumIndex; 
@@ -59,6 +62,14 @@ namespace GamesCrane.Model
             set
             {
                 _path = value;
+            }
+        }
+        public string PathFlags
+        {
+            get { return _pathFlags; }
+            set
+            {
+                _pathFlags = value;
             }
         }
 

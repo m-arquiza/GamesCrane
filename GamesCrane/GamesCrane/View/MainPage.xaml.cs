@@ -91,7 +91,6 @@ namespace GamesCrane.View
 
                 TextBlock vendTitle = (TextBlock)FindName("GameSelectedTitle");
                 vendTitle.Text = game.Title;
-
             }
         }
 

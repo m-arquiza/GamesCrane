@@ -141,7 +141,21 @@ namespace GamesCrane.ViewModel
 
         private void GameLaunch()
         {
-            System.Diagnostics.Process.Start(VendedGame.Path);
+            ProcessStartInfo startInfo = new ProcessStartInfo(VendedGame.Path);
+            if (VendedGame.HasFlags)
+            {
+                startInfo.Arguments = VendedGame.PathFlags;
+            }
+
+            try
+            {
+                System.Diagnostics.Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                Console.WriteLine($"Error: {ex.Message}");
+            }
         }
 
         private void NavigateToPage()

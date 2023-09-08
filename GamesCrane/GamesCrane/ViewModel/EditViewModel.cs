@@ -50,7 +50,6 @@ namespace GamesCrane.ViewModel
             if (GameTitle.Equals("Untitled Game") |
                 GameImagePath.Equals("ms-appx:///Assets/StarsBorder.png"))
             {
-                Debug.WriteLine("title or path bad");
                 AddGameDetailsContentDialog dialog = new AddGameDetailsContentDialog();
                 if (m_window.Content is FrameworkElement fe)
                 {
@@ -65,7 +64,6 @@ namespace GamesCrane.ViewModel
             }
             else
             {
-                Debug.WriteLine("title n path... good");
                 SendDetails();
             }
         }
@@ -74,7 +72,27 @@ namespace GamesCrane.ViewModel
         {
             //string programFilesFolder = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             //string filePath = Path.Combine(programFilesFolder, "Minecraft Launcher\\MinecraftLauncher.exe");
-            string filePath = GamePath.Trim('"');
+            string filePath = GamePath.Replace("\"", "");
+
+            if (GamepathHasFlags)
+            {
+
+                int exeIndex = filePath.IndexOf(".exe");
+                if (exeIndex >= 0)
+                {
+                    GamePath = filePath.Substring(0, exeIndex + 4);
+                    NewGame.PathFlags = filePath.Substring(exeIndex + 4).Trim();
+                    filePath = GamePath;
+                }
+                else
+                {
+                    FilePathErrorDisplayText = "File does not end in .exe! Are you missing the executable in the path?";
+                    return false;
+                }
+                Debug.WriteLine("path: " + filePath);
+                Debug.WriteLine("flags:" + NewGame.PathFlags);
+            }
+
             if (File.Exists(filePath))
             {
                 string fileExtension = Path.GetExtension(filePath);
