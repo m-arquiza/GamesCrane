@@ -128,10 +128,10 @@
                     <StackPanel Orientation="Horizontal" Grid.Row="5" Height="70">
                         <Button x:ConnectionId='2' HorizontalAlignment="Left" VerticalAlignment="Center" Width="65" 
                                 Command="{Binding ReturnToMainScreenCommand}" Content="Cancel" Margin="30, 10, 0, 20"
-                                x:Name="BackButton"/>
+                                Name="BackButton"/>
                         <Button x:ConnectionId='3' HorizontalAlignment="Right" VerticalAlignment="Center" Width="90" 
                                                       Content="Add Game"  Margin="245, 10, 0, 20"
-                                x:Name="SendDetailsButton" IsEnabled="false"/>
+                                Name="SendDetailsButton" IsEnabled="false"/>
                     </StackPanel>
                 </Grid>
             </Border>

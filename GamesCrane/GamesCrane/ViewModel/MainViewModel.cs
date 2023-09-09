@@ -12,6 +12,10 @@ using GamesCrane.Services;
 using GamesCrane.View;
 using Microsoft.UI.Xaml.Controls;
 using GamesCrane.Model;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml;
+using Windows.Storage;
+using CommunityToolkit.WinUI.UI.Controls;
 
 namespace GamesCrane.ViewModel
 {
@@ -19,7 +23,6 @@ namespace GamesCrane.ViewModel
     {
         private readonly NavigationService _navigationService;
         public ICommand NavigateToPageCommand { get; }
-        public ICommand GameStartupCommand { get; }
 
         private Game _newGame;
         private Game _vendedGame;
@@ -31,7 +34,6 @@ namespace GamesCrane.ViewModel
             _navigationService = new NavigationService(frame);
 
             NavigateToPageCommand = new RelayCommand(NavigateToPage);
-            GameStartupCommand = new RelayCommand(GameLaunch);
 
             _newGame = new Game();
             _vendedGame = new Game();
@@ -139,22 +141,27 @@ namespace GamesCrane.ViewModel
             return game;
         }
 
-        private void GameLaunch()
+        public bool GameLaunch()
         {
             ProcessStartInfo startInfo = new ProcessStartInfo(VendedGame.Path);
             if (VendedGame.HasFlags)
             {
                 startInfo.Arguments = VendedGame.PathFlags;
             }
+            if (VendedGame.NeedsAdmin)
+            {
+                startInfo.UseShellExecute = true;
+                startInfo.Verb = "runas";
+            }
 
             try
             {
                 System.Diagnostics.Process.Start(startInfo);
+                return true;
             }
             catch (Exception ex)
             {
-                // Handle any exceptions
-                Console.WriteLine($"Error: {ex.Message}");
+                return false;
             }
         }
 

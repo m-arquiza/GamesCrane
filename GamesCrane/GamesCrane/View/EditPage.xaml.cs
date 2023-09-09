@@ -84,7 +84,7 @@ namespace GamesCrane.View
         {
             if (!viewModel.verifyPath())
             {
-                FlyoutBase.ShowAttachedFlyout((FrameworkElement)PathBox);
+                FlyoutBase.ShowAttachedFlyout(PathBox);
             }
             else
             {

@@ -72,7 +72,7 @@ namespace GamesCrane.View
         private void Game_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
             Vend(sender);
-            viewModel.GameStartupCommand.Execute(null);
+            LaunchGame(sender, (RoutedEventArgs) e);
         }
 
         private void Vend(object sender)
@@ -91,6 +91,15 @@ namespace GamesCrane.View
 
                 TextBlock vendTitle = (TextBlock)FindName("GameSelectedTitle");
                 vendTitle.Text = game.Title;
+            }
+        }
+
+        private void LaunchGame(object sender, RoutedEventArgs e)
+        {
+            bool success = viewModel.GameLaunch();
+            if (!success)
+            {
+                FlyoutBase.ShowAttachedFlyout(PlayButton);
             }
         }
 

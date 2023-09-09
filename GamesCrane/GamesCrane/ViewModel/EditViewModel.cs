@@ -83,14 +83,14 @@ namespace GamesCrane.ViewModel
                     GamePath = filePath.Substring(0, exeIndex + 4);
                     NewGame.PathFlags = filePath.Substring(exeIndex + 4).Trim();
                     filePath = GamePath;
+                Debug.WriteLine("path: " + filePath);
+                Debug.WriteLine("flags:" + NewGame.PathFlags);
                 }
                 else
                 {
                     FilePathErrorDisplayText = "File does not end in .exe! Are you missing the executable in the path?";
                     return false;
                 }
-                Debug.WriteLine("path: " + filePath);
-                Debug.WriteLine("flags:" + NewGame.PathFlags);
             }
 
             if (File.Exists(filePath))
@@ -114,7 +114,7 @@ namespace GamesCrane.ViewModel
             }
             else
             {
-                FilePathErrorDisplayText = "File does not exist! System cannot find the executable based on the given path.";
+                FilePathErrorDisplayText = "File does not exist! System cannot find the application based on the information you've given. Please make sure that you've selected the right option based on the given path (does this path include flags (marked as .exe -<somethinghere>) or do you need to run this program as administrator?";
             }
             return false;
         }

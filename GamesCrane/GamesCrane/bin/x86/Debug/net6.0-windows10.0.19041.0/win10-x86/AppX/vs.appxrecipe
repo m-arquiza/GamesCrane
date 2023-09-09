@@ -29,29 +29,29 @@
     <AppXManifest Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-08T06:01:50.875</Modified>
+      <Modified>2023-09-09T00:33:55.461</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-09-08T06:00:59.676</Modified>
+      <Modified>2023-09-09T00:33:54.675</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.runtimeconfig.json">
       <PackagePath>GamesCrane.runtimeconfig.json</PackagePath>
-      <Modified>2023-09-07T06:22:09.411</Modified>
+      <Modified>2023-09-08T06:54:48.602</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.dll">
       <PackagePath>GamesCrane.dll</PackagePath>
-      <Modified>2023-09-08T06:01:50.505</Modified>
+      <Modified>2023-09-09T00:33:54.034</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>GamesCrane.exe</PackagePath>
-      <Modified>2023-09-08T06:01:50.510</Modified>
+      <Modified>2023-09-09T00:33:54.093</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.deps.json">
       <PackagePath>GamesCrane.deps.json</PackagePath>
-      <Modified>2023-09-07T06:22:09.408</Modified>
+      <Modified>2023-09-08T06:54:48.399</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\.nuget\packages\microsoft.netcore.app.runtime.win-x86\6.0.18\runtimes\win-x86\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
