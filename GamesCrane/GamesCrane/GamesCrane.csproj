@@ -15,6 +15,7 @@
     <None Remove="Assets\EditMenuBackground.png" />
     <None Remove="Assets\MainBackground.png" />
     <None Remove="View\AddGameDetailsContentDialog.xaml" />
+    <None Remove="View\AddPage.xaml" />
     <None Remove="View\EditPage.xaml" />
     <None Remove="View\MainPage.xaml" />
   </ItemGroup>
@@ -51,12 +52,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\EditPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="View\AddGameDetailsContentDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\EditPage.xaml">
+    <Page Update="View\AddPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

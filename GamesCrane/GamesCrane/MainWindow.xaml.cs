@@ -1,3 +1,5 @@
+using GamesCrane.Model;
+using GamesCrane.Services;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -8,6 +10,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,19 +25,19 @@ namespace GamesCrane
         public MainWindow()
         {
             this.InitializeComponent();
+            //this.Closed += MainWindow_Closed;
 
             // Resizes and positions window in center of screen
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
 
             if (appWindow is not null)
             {
                 appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1520, Height = 855 });
 
-                Microsoft.UI.Windowing.DisplayArea displayArea =
-                    Microsoft.UI.Windowing.DisplayArea.GetFromWindowId(windowId,
-                    Microsoft.UI.Windowing.DisplayAreaFallback.Nearest);
+                DisplayArea displayArea =
+                DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Nearest);
 
                 if (displayArea is not null)
                 {
@@ -49,5 +52,16 @@ namespace GamesCrane
             _presenter.IsResizable = false;
         }
 
+        //public Game[,] Games { get; set; }
+
+        //private async void MainWindow_Closed(object sender, WindowEventArgs e)
+        //{
+        //    Debug.WriteLine("suspending");
+        //    var deferral = e.SuspendingOperation.GetDeferral();
+
+        //    await AppStateManagerService.SaveAppStateAsync(Games);
+
+        //    deferral.Complete();
+        //}
     }
 }

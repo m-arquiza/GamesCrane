@@ -14,126 +14,19 @@
 
         <Grid Width="470" Height="460" Background="Transparent">
             <Border CornerRadius="12" BorderBrush="#72b4e7" BorderThickness="8">
-                <Grid Width="460" Height="450" Background="Transparent">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="135" />
-                        <RowDefinition Height="60" />
-                        <RowDefinition Height="65" />
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="80" />
-                        <RowDefinition Height="70" />
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Image Grid.RowSpan="6" Source="/Assets/AddMenuBackground.png" Stretch="UniformToFill" />
-
-                    <Grid Height="60"  Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="12*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Title" Margin="0, 0, 10, 0"
-                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
-                        
-                        <TextBox Grid.Row="0" Grid.Column="1" Name="TitleBox"
-                                 VerticalAlignment="Center" Text="{Binding GameTitle, Mode=TwoWay}" />
-                    </Grid>
-
-                    <Grid Height="65"  Grid.Row="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="6*" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="12*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Path" Margin="0, 0, 10, 0"
-                                   HorizontalAlignment="Right" VerticalAlignment="Center" 
-                                   ToolTipService.ToolTip="Please ensure the file path you enter is accurate and leads to the correct and valid executable file (with the .exe extension). Double-check for any typos or mistakes in the path as the program will not be able to launch the desired application!"/>
-
-                        <TextBox Grid.Row="0" Grid.Column="1" Name="PathBox" TextChanged="EnableAdd"
-                                 VerticalAlignment="Center" Text="{Binding GamePath, Mode=TwoWay}">
-                            <FlyoutBase.AttachedFlyout>
-                                <Flyout>
-                                    <StackPanel Orientation="Vertical" Width="450">
-                                        <TextBlock Text="This system cannot run this file! Please enter a valid executable path." TextWrapping="Wrap"/>
-                                        <TextBlock TextWrapping="Wrap">
-                                            <Run Text="Error:" FontWeight="Bold"/>
-                                            <Run Text="{Binding FilePathErrorDisplayText}"/>
-                                        </TextBlock>  
-                                    </StackPanel>
-                                </Flyout>
-                            </FlyoutBase.AttachedFlyout>
-                        </TextBox> 
-
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="* Required" Margin="0, -18, 10, 0" Foreground="#9c1919" 
-                                   HorizontalAlignment="Right" VerticalAlignment="Top" FontStyle="Italic"/>
-
-                    </Grid>
-
-                    <StackPanel Orientation="Horizontal" Grid.Row="3" Height="40">
-                        <CheckBox Content="Run as Administrator" Margin="50,0,0,0"
-                                  VerticalAlignment="Center" HorizontalAlignment="Center" 
-                                  Checked="handleAdmin" Unchecked="handleAdmin"/>
-                        <CheckBox Content="Path Includes Flags" Margin="50,0,0,0"
-                                  VerticalAlignment="Center" HorizontalAlignment="Center"
-                                  Checked="handleFlags" Unchecked="handleFlags"/>
-                    </StackPanel>
-                    
-                    <Grid Height="80"  Grid.Row="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="90" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="110" />
-                            <ColumnDefinition Width="180" />
-                        </Grid.ColumnDefinitions>
-
-
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Game Image" Margin="10, 0, 0, 0"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
-
-                        <Image Name="SelectedImage" VerticalAlignment="Center" Width="50" 
-                               Grid.Row="0" Grid.Column="1" Source="/Assets/StarsNoEdge.png"/>
-
-                        <Button Grid.Row="0" Grid.Column="2" Name="SelectImageButton" 
-                                VerticalAlignment="Center" HorizontalAlignment="Left"
-                                Height="29" Margin="-5, 0, 10, 0"
-                                Click="SelectImage" Content="Choose File" />
-
-                        <TextBlock Name="SelectedImagePath" Grid.Row="0" Grid.Column="3" 
-                                   TextTrimming="CharacterEllipsis" Margin="-16, 0, 10, 0"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
-
-                    </Grid>
-
-
-                    <StackPanel Orientation="Horizontal" Grid.Row="5" Height="70">
-                        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Width="65" 
-                                Command="{Binding ReturnToMainScreenCommand}" Content="Cancel" Margin="30, 10, 0, 20"
-                                Name="BackButton"/>
-                        <Button HorizontalAlignment="Right" VerticalAlignment="Center" Width="90" 
-                                Click="VerifyAndSend" Content="Add Game"  Margin="245, 10, 0, 20"
-                                Name="SendDetailsButton" IsEnabled="false"/>
-                    </StackPanel>
-                </Grid>
+                <StackPanel Orientation="Vertical" Width="460" Height="450">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="/Assets/EditMenuBackground.png" />
+                    </StackPanel.Background>
+                    <Button Command="{Binding NavigateToAddCommand}" Width="265" Height ="63"
+                            VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 153, 0, 0">
+                        <Button.Background>
+                            <SolidColorBrush Color="Transparent"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Content="Back" VerticalAlignment="Bottom" Width="65" 
+                                Command="{Binding ReturnToMainScreenCommand}" Margin="30, 10, 0, -210"/>
+                </StackPanel>
             </Border>
         </Grid>
     </Grid>

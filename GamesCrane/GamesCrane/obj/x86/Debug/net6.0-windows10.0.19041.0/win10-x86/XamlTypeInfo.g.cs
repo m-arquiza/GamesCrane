@@ -224,7 +224,7 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[13];
+            _typeNameTable = new string[14];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -234,12 +234,13 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             _typeNameTable[6] = "GamesCrane.View.AddGameDetailsContentDialog";
             _typeNameTable[7] = "Microsoft.UI.Xaml.Controls.ContentDialog";
             _typeNameTable[8] = "Microsoft.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[9] = "GamesCrane.View.EditPage";
+            _typeNameTable[9] = "GamesCrane.View.AddPage";
             _typeNameTable[10] = "Microsoft.UI.Xaml.Controls.Page";
             _typeNameTable[11] = "Microsoft.UI.Xaml.Controls.UserControl";
-            _typeNameTable[12] = "GamesCrane.View.MainPage";
+            _typeNameTable[12] = "GamesCrane.View.EditPage";
+            _typeNameTable[13] = "GamesCrane.View.MainPage";
 
-            _typeTable = new global::System.Type[13];
+            _typeTable = new global::System.Type[14];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -249,10 +250,11 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
             _typeTable[6] = typeof(global::GamesCrane.View.AddGameDetailsContentDialog);
             _typeTable[7] = typeof(global::Microsoft.UI.Xaml.Controls.ContentDialog);
             _typeTable[8] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
-            _typeTable[9] = typeof(global::GamesCrane.View.EditPage);
+            _typeTable[9] = typeof(global::GamesCrane.View.AddPage);
             _typeTable[10] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
             _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
-            _typeTable[12] = typeof(global::GamesCrane.View.MainPage);
+            _typeTable[12] = typeof(global::GamesCrane.View.EditPage);
+            _typeTable[13] = typeof(global::GamesCrane.View.MainPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -290,8 +292,9 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
         private object Activate_4_MainWindow() { return new global::GamesCrane.MainWindow(); }
         private object Activate_6_AddGameDetailsContentDialog() { return new global::GamesCrane.View.AddGameDetailsContentDialog(); }
-        private object Activate_9_EditPage() { return new global::GamesCrane.View.EditPage(); }
-        private object Activate_12_MainPage() { return new global::GamesCrane.View.MainPage(); }
+        private object Activate_9_AddPage() { return new global::GamesCrane.View.AddPage(); }
+        private object Activate_12_EditPage() { return new global::GamesCrane.View.EditPage(); }
+        private object Activate_13_MainPage() { return new global::GamesCrane.View.MainPage(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -356,9 +359,9 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
                 xamlType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 9:   //  GamesCrane.View.EditPage
+            case 9:   //  GamesCrane.View.AddPage
                 userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_EditPage;
+                userType.Activator = Activate_9_AddPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -371,9 +374,16 @@ namespace GamesCrane.GamesCrane_XamlTypeInfo
                 xamlType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  GamesCrane.View.MainPage
+            case 12:   //  GamesCrane.View.EditPage
                 userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_12_MainPage;
+                userType.Activator = Activate_12_EditPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 13:   //  GamesCrane.View.MainPage
+                userType = new global::GamesCrane.GamesCrane_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_13_MainPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

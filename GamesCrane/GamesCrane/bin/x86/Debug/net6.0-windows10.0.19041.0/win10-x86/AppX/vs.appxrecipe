@@ -29,29 +29,29 @@
     <AppXManifest Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-09T00:33:55.461</Modified>
+      <Modified>2023-09-15T08:47:04.653</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-09-09T00:33:54.675</Modified>
+      <Modified>2023-09-15T08:47:04.277</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.runtimeconfig.json">
       <PackagePath>GamesCrane.runtimeconfig.json</PackagePath>
-      <Modified>2023-09-08T06:54:48.602</Modified>
+      <Modified>2023-09-15T08:25:56.349</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.dll">
       <PackagePath>GamesCrane.dll</PackagePath>
-      <Modified>2023-09-09T00:33:54.034</Modified>
+      <Modified>2023-09-15T08:47:03.930</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>GamesCrane.exe</PackagePath>
-      <Modified>2023-09-09T00:33:54.093</Modified>
+      <Modified>2023-09-15T08:47:03.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\GamesCrane.deps.json">
       <PackagePath>GamesCrane.deps.json</PackagePath>
-      <Modified>2023-09-08T06:54:48.399</Modified>
+      <Modified>2023-09-15T08:25:56.349</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\.nuget\packages\microsoft.netcore.app.runtime.win-x86\6.0.18\runtimes\win-x86\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1125,13 +1125,17 @@
       <PackagePath>Assets\AddMenuBackground.png</PackagePath>
       <Modified>2023-09-05T08:20:56.721</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\DeleteMenuBackground.png">
+      <PackagePath>Assets\DeleteMenuBackground.png</PackagePath>
+      <Modified>2023-09-10T04:38:01.382</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\EditMenuBackground.png">
       <PackagePath>Assets\EditMenuBackground.png</PackagePath>
-      <Modified>2023-09-04T11:54:54.937</Modified>
+      <Modified>2023-09-15T06:34:10.182</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\EditPageBackground.png">
       <PackagePath>Assets\EditPageBackground.png</PackagePath>
-      <Modified>2023-09-05T01:00:26.271</Modified>
+      <Modified>2023-09-15T08:46:31.127</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -1139,7 +1143,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\MainPageBackground.png">
       <PackagePath>Assets\MainPageBackground.png</PackagePath>
-      <Modified>2023-09-05T00:58:49.749</Modified>
+      <Modified>2023-09-15T08:46:37.394</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\ModifyMenuBackground.png">
+      <PackagePath>Assets\ModifyMenuBackground.png</PackagePath>
+      <Modified>2023-09-10T04:38:11.523</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>

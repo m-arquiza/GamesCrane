@@ -844,6 +844,9 @@
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\AddMenuBackground.png">
       <PackagePath>Assets\AddMenuBackground.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\DeleteMenuBackground.png">
+      <PackagePath>Assets\DeleteMenuBackground.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\EditMenuBackground.png">
       <PackagePath>Assets\EditMenuBackground.png</PackagePath>
     </AppxPackagedFile>
@@ -855,6 +858,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\MainPageBackground.png">
       <PackagePath>Assets\MainPageBackground.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\ModifyMenuBackground.png">
+      <PackagePath>Assets\ModifyMenuBackground.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>

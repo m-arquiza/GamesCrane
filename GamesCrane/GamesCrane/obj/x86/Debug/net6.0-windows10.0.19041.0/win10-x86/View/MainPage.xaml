@@ -73,6 +73,11 @@
             <TextBlock x:ConnectionId='4' Name="GameSelectedTitle" Height="16" HorizontalAlignment="Center"/>
         </StackPanel>
 
+        <Button Command="{Binding SaveCommand}" Width="53" Height="30" Margin="0,52,57,0"
+            HorizontalAlignment="Right" VerticalAlignment="Top">
+            
+        </Button>
+        
         <Grid Width="200" Height="263" HorizontalAlignment="Right" VerticalAlignment="Center"
               Margin="0, 230, 44 , 0">
             <Grid.RowDefinitions>
@@ -84,7 +89,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" Command="{Binding NavigateToPageCommand}"
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding NavigateToEditCommand}"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Button.Background>
                     <SolidColorBrush Color="Transparent"/>

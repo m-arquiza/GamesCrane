@@ -1,5 +1,6 @@
 App.xbf
 MainWindow.xbf
 View\AddGameDetailsContentDialog.xbf
+View\AddPage.xbf
 View\EditPage.xbf
 View\MainPage.xbf

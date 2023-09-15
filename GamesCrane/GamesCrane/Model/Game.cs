@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GamesCrane.Model
 {
+    [Serializable]
     public class Game
     {
         private string _title;

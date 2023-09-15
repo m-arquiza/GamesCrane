@@ -22,7 +22,8 @@ namespace GamesCrane.ViewModel
     public class MainViewModel
     {
         private readonly NavigationService _navigationService;
-        public ICommand NavigateToPageCommand { get; }
+        public ICommand NavigateToEditCommand { get; }
+        public ICommand SaveCommand { get; }
 
         private Game _newGame;
         private Game _vendedGame;
@@ -33,8 +34,8 @@ namespace GamesCrane.ViewModel
             Frame frame = App.RootFrame;
             _navigationService = new NavigationService(frame);
 
-            NavigateToPageCommand = new RelayCommand(NavigateToPage);
-
+            NavigateToEditCommand = new RelayCommand(NavigateToEdit);
+            SaveCommand = new RelayCommand(OnSave);
             _newGame = new Game();
             _vendedGame = new Game();
             _games = new Game[3, 5];
@@ -161,13 +162,20 @@ namespace GamesCrane.ViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"An exception occurred: {ex.Message}");
                 return false;
             }
         }
 
-        private void NavigateToPage()
+        private void NavigateToEdit()
         {
             _navigationService.Navigate(typeof(EditPage));
+        }
+
+        private async void OnSave()
+        {
+            Debug.WriteLine("saving");
+            await AppStateManagerService.SaveAppStateAsync(Games);
         }
 
 
@@ -177,6 +185,7 @@ namespace GamesCrane.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
 
     }
 }

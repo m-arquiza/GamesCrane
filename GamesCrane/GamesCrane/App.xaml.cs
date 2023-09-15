@@ -15,6 +15,10 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using GamesCrane.Services;
+using GamesCrane.Model;
+using System.Diagnostics;
+using Windows.ApplicationModel.Core;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -51,10 +55,12 @@ namespace GamesCrane
             RootFrame = rootFrame;
 
             rootFrame.Navigate(typeof(View.EditPage), args.Arguments);
+            rootFrame.Navigate(typeof(View.AddPage), args.Arguments);
             rootFrame.Navigate(typeof(View.MainPage), args.Arguments);
 
             m_window.Content = rootFrame;
             m_window.Activate();
+
         }
 
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
