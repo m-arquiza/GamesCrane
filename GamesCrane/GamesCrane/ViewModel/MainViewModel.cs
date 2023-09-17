@@ -29,6 +29,8 @@ namespace GamesCrane.ViewModel
         private Game _vendedGame;
         private Game[,] _games;
         private int _gamesCount;
+
+        private bool _dataLoaded;
         public MainViewModel()
         {
             Frame frame = App.RootFrame;
@@ -40,6 +42,10 @@ namespace GamesCrane.ViewModel
             _vendedGame = new Game();
             _games = new Game[3, 5];
             _gamesCount = 0;
+            
+            _dataLoaded = false;
+
+            OnLoad();
         }
 
         public Game NewGame
@@ -55,7 +61,7 @@ namespace GamesCrane.ViewModel
 
                     _newGame = value;
 
-                    OnPropertyChanged(nameof(_newGame));
+                    OnPropertyChanged(nameof(NewGame));
 
                     GameAdded(_newGame);
                 }
@@ -98,7 +104,21 @@ namespace GamesCrane.ViewModel
                 if (_gamesCount != value)
                 {   
                     _gamesCount = value;
-                    OnPropertyChanged(nameof(_gamesCount));
+                    OnPropertyChanged(nameof(GamesCount));
+                }
+            }
+        }
+
+
+        public bool IsDataLoaded
+        {
+            get { return _dataLoaded; }
+            set
+            {
+                if (_dataLoaded != value)
+                {
+                    _dataLoaded = value;
+                    OnPropertyChanged(nameof(IsDataLoaded));
                 }
             }
         }
@@ -111,7 +131,7 @@ namespace GamesCrane.ViewModel
                 if (_games != value)
                 {
                     _games = value;
-                    OnPropertyChanged(nameof(_games));
+                    OnPropertyChanged(nameof(Games));
                 }
             }
         }
@@ -174,8 +194,13 @@ namespace GamesCrane.ViewModel
 
         private async void OnSave()
         {
-            Debug.WriteLine("saving");
             await AppStateManagerService.SaveAppStateAsync(Games);
+        }
+
+        private async void OnLoad()
+        {
+            Games = await AppStateManagerService.LoadAppStateAsync();
+            IsDataLoaded = true;
         }
 
 

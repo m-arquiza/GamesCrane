@@ -30,7 +30,6 @@ namespace GamesCrane.Services
                     serializer.Serialize(stream, flattenedGames);
                 }
 
-                LoadAppStateAsync();
             }
             catch (Exception ex)
             {
@@ -38,40 +37,31 @@ namespace GamesCrane.Services
             }
         }
 
-        public static async Task LoadAppStateAsync()
+        public static async Task<Game[,]> LoadAppStateAsync()
         {
-            Game[,] result = new Game[3, 5];
+            Game[,] games = new Game[3, 5];
             var localFolder = ApplicationData.Current.LocalFolder;
-            StorageFile justchecking = await localFolder.GetFileAsync("appgames.xml");
+            StorageFile savedGamesFile = await localFolder.GetFileAsync("appgames.xml");
 
-            using (Stream stream = await justchecking.OpenStreamForReadAsync())
+            using (Stream stream = await savedGamesFile.OpenStreamForReadAsync())
             {
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     XmlSerializer check = new XmlSerializer(typeof(Game[]));
-                    Game[] flat = (Game[])check.Deserialize(reader);
+                    Game[] flattenedGames = (Game[])check.Deserialize(reader);
 
                     for (int row = 0; row < 3; row++)
                     {
                         for (int column = 0; column < 5; column++)
                         {
-                            // Calculate the index in the flattened array based on row and column.
                             int index = row * 5 + column;
 
-                            // Assign the corresponding element from the flattened array to the 2D array.
-                            result[row, column] = flat[index];
+                            games[row, column] = flattenedGames[index];
                         }
                     }
                 }
             }
-
-            foreach (var game in result)
-            {
-                if (game != null)
-                {
-                    Debug.WriteLine(game.Title);
-                }
-            }
+            return games;
         }
     }
 }

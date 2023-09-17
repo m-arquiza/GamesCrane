@@ -18,6 +18,7 @@ using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using GamesCrane.Model;
+using System.Threading.Tasks;
 
 namespace GamesCrane.View
 {
@@ -25,7 +26,7 @@ namespace GamesCrane.View
     {
         private MainViewModel viewModel;
         private string[,] gameImages;
-
+        private bool needsInitialUpdate;
         public MainPage()
         {
             this.InitializeComponent();
@@ -33,10 +34,35 @@ namespace GamesCrane.View
             DataContext = viewModel;
 
             gameImages = new string[3,5];
+            needsInitialUpdate = true;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (needsInitialUpdate)
+            {
+                while (!viewModel.IsDataLoaded)
+                {
+                    await Task.Delay(100);
+                }
+                Game[,] games = viewModel.Games;
+                for (int row = 0; row < 3; row++)
+                {
+                    for (int column = 0; column < 5; column++)
+                    {
+                        Game game = games[row, column];
+                        string image = gameImages[row, column];
+                        if (game != null && string.IsNullOrEmpty(image))
+                        {
+                            gameImages[row, column] = game.ImagePath;
+                            UpdateImage(game);
+                        }
+                    }
+                }
+                needsInitialUpdate = false;
+            }
+            
+            
             if (e.Parameter is Game)
             {
                 viewModel.NewGame = (Game) e.Parameter;
@@ -63,6 +89,7 @@ namespace GamesCrane.View
             }
 
         }
+
 
         private void Game_Tapped(object sender, TappedRoutedEventArgs e)
         {

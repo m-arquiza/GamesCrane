@@ -54,8 +54,8 @@ namespace GamesCrane
 
             RootFrame = rootFrame;
 
-            rootFrame.Navigate(typeof(View.EditPage), args.Arguments);
-            rootFrame.Navigate(typeof(View.AddPage), args.Arguments);
+            //rootFrame.Navigate(typeof(View.EditPage), args.Arguments);
+            //rootFrame.Navigate(typeof(View.AddPage), args.Arguments);
             rootFrame.Navigate(typeof(View.MainPage), args.Arguments);
 
             m_window.Content = rootFrame;

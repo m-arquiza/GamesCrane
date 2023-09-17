@@ -73,9 +73,11 @@
             <TextBlock x:ConnectionId='4' Name="GameSelectedTitle" Height="16" HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <Button Command="{Binding SaveCommand}" Width="53" Height="30" Margin="0,52,57,0"
+        <Button Command="{Binding SaveCommand}" Width="97" Height="57" Margin="0,37,42,0"
             HorizontalAlignment="Right" VerticalAlignment="Top">
-            
+            <Button.Background>
+                <SolidColorBrush Color="Transparent"/>
+            </Button.Background>
         </Button>
         
         <Grid Width="200" Height="263" HorizontalAlignment="Right" VerticalAlignment="Center"

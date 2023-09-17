@@ -78,8 +78,6 @@ namespace GamesCrane.ViewModel
                     GamePath = filePath.Substring(0, exeIndex + 4);
                     NewGame.PathFlags = filePath.Substring(exeIndex + 4).Trim();
                     filePath = GamePath;
-                    Debug.WriteLine("path: " + filePath);
-                    Debug.WriteLine("flags:" + NewGame.PathFlags);
                 }
                 else
                 {

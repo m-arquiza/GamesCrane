@@ -51,17 +51,5 @@ namespace GamesCrane
             _presenter = appWindow.Presenter as OverlappedPresenter;
             _presenter.IsResizable = false;
         }
-
-        //public Game[,] Games { get; set; }
-
-        //private async void MainWindow_Closed(object sender, WindowEventArgs e)
-        //{
-        //    Debug.WriteLine("suspending");
-        //    var deferral = e.SuspendingOperation.GetDeferral();
-
-        //    await AppStateManagerService.SaveAppStateAsync(Games);
-
-        //    deferral.Complete();
-        //}
     }
 }
