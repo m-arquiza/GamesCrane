@@ -859,6 +859,12 @@
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\MainPageBackground.png">
       <PackagePath>Assets\MainPageBackground.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\MainPageBackground_Modifying.png">
+      <PackagePath>Assets\MainPageBackground_Modifying.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\MainPageBackground_Removing.png">
+      <PackagePath>Assets\MainPageBackground_Removing.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Miche\source\repos\m-arquiza\GamesCrane\GamesCrane\GamesCrane\Assets\ModifyMenuBackground.png">
       <PackagePath>Assets\ModifyMenuBackground.png</PackagePath>
     </AppxPackagedFile>

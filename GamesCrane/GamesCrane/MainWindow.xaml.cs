@@ -34,7 +34,7 @@ namespace GamesCrane
 
             if (appWindow is not null)
             {
-                appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1520, Height = 855 });
+                appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 1536, Height = 864 });
 
                 DisplayArea displayArea =
                 DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Nearest);

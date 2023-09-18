@@ -20,7 +20,7 @@ namespace GamesCrane.Services
             try
             {
                 StorageFile savedGamesFile = await localFolder.CreateFileAsync("appgames.xml", CreationCollisionOption.ReplaceExisting);
-                
+
                 Game[] flattenedGames = games.Cast<Game>().ToArray();
 
 
@@ -37,9 +37,10 @@ namespace GamesCrane.Services
             }
         }
 
-        public static async Task<Game[,]> LoadAppStateAsync()
+        public static async Task<Object[]> LoadAppStateAsync()
         {
             Game[,] games = new Game[3, 5];
+            int gameCount = 0;
             var localFolder = ApplicationData.Current.LocalFolder;
             StorageFile savedGamesFile = await localFolder.GetFileAsync("appgames.xml");
 
@@ -55,13 +56,23 @@ namespace GamesCrane.Services
                         for (int column = 0; column < 5; column++)
                         {
                             int index = row * 5 + column;
+                            Game game = flattenedGames[index];
 
-                            games[row, column] = flattenedGames[index];
+                            if (game != null)
+                            {
+                                gameCount++;
+                            }
+
+                            games[row, column] = game;
                         }
                     }
                 }
             }
-            return games;
+            Object[] res = new object[2];
+            res[0] = gameCount;
+            res[1] = games;
+
+            return res;
         }
     }
 }

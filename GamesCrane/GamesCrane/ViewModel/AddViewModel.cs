@@ -65,8 +65,6 @@ namespace GamesCrane.ViewModel
 
         public bool verifyPath()
         {
-            //string programFilesFolder = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            //string filePath = Path.Combine(programFilesFolder, "Minecraft Launcher\\MinecraftLauncher.exe");
             string filePath = GamePath.Replace("\"", "");
 
             if (GamepathHasFlags)

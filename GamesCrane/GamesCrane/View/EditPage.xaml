@@ -18,14 +18,29 @@
                     <StackPanel.Background>
                         <ImageBrush ImageSource="/Assets/EditMenuBackground.png" />
                     </StackPanel.Background>
-                    <Button Command="{Binding NavigateToAddCommand}" Width="265" Height ="63"
+
+                    <Button Command="{Binding NavigateToAddCommand}" Width="265" Height ="63" Name="AddButton"
                             VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 153, 0, 0">
                         <Button.Background>
                             <SolidColorBrush Color="Transparent"/>
                         </Button.Background>
                     </Button>
+
+                    <Button Command="{Binding StartModifyCommand}" Width="265" Height ="63" Name="ModifyButton"
+                            VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 17, 0, 0"  IsEnabled="False">
+                        <Button.Background>
+                            <SolidColorBrush Color="Transparent"/>
+                        </Button.Background>
+                    </Button>
+
+                    <Button Command="{Binding StartRemoveCommand}" Width="265" Height ="63" Name="RemoveButton"
+                            VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 18, 0, 0">
+                        <Button.Background>
+                            <SolidColorBrush Color="Transparent"/>
+                        </Button.Background>
+                    </Button>
                     <Button Content="Back" VerticalAlignment="Bottom" Width="65" 
-                                Command="{Binding ReturnToMainScreenCommand}" Margin="30, 10, 0, -210"/>
+                                Command="{Binding ReturnToMainScreenCommand}" Margin="30, 16, 0, 0"/>
                 </StackPanel>
             </Border>
         </Grid>

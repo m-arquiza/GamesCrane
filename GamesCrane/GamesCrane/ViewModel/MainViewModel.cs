@@ -31,6 +31,8 @@ namespace GamesCrane.ViewModel
         private int _gamesCount;
 
         private bool _dataLoaded;
+
+        private string _state;
         public MainViewModel()
         {
             Frame frame = App.RootFrame;
@@ -45,28 +47,11 @@ namespace GamesCrane.ViewModel
             
             _dataLoaded = false;
 
+            _state = "default";
+
             OnLoad();
         }
 
-        public Game NewGame
-        {
-            get { return _newGame; }
-            set
-            {
-                if (_newGame != value)
-                {
-                    GamesCount++;
-                    value.NumIndex = _gamesCount;
-                    value.VendIndex = GameIndex(_gamesCount);
-
-                    _newGame = value;
-
-                    OnPropertyChanged(nameof(NewGame));
-
-                    GameAdded(_newGame);
-                }
-            }
-        }
         public Game VendedGame
         {
             get { return _vendedGame; }
@@ -81,18 +66,71 @@ namespace GamesCrane.ViewModel
             }
         }
 
-        private void GameAdded(Game gameToAdd)
+        public Game AddGame(Game gameToAdd)
         {
             Game currGame = new Game(gameToAdd);
+
+            GamesCount++;
+            currGame.NumIndex = _gamesCount;
+            currGame.VendIndex = GameIndex(_gamesCount);
+
             int[] index = currGame.VendIndex;
             if (index[0] != -1)
             {
                 _games[index[0], index[1]] = currGame;
+                return currGame;
             }
             else
             {
-                Console.WriteLine("Too many games!");
-                _gamesCount--;
+                return null;
+            }
+        }
+
+        public void DeleteGame(Game gameToDelete)
+        {
+            if(GamesCount != 0)
+            {
+                for (int row = gameToDelete.VendIndex[0]; row < 3; row++)
+                {
+                    for (int col = gameToDelete.VendIndex[1]; col < 5; col++)
+                    {
+                        if (gameToDelete.NumIndex == GamesCount)
+                        {
+                            Games[row, col] = null;
+                            GamesCount--;
+                            return;
+                        }
+
+                        if (col != 4)
+                        {
+                            Games[row, col] = Games[row, col + 1];
+                            LowerGameIndex(Games[row, col]);
+                        }
+                        else
+                        {
+                            if (row != 2)
+                            {
+                                Games[row, col] = Games[row + 1, 0];
+                                LowerGameIndex(Games[row, col]);
+                            }
+                            else
+                            {
+                                Games[row, col] = null;
+                            }
+
+                        }
+                    }
+                }
+                GamesCount--;
+            }
+            OnPropertyChanged(nameof(Games));
+        }
+
+        private void LowerGameIndex(Game game)
+        {
+            if (game != null)
+            {
+                game.NumIndex--;
             }
         }
 
@@ -109,7 +147,6 @@ namespace GamesCrane.ViewModel
             }
         }
 
-
         public bool IsDataLoaded
         {
             get { return _dataLoaded; }
@@ -119,6 +156,19 @@ namespace GamesCrane.ViewModel
                 {
                     _dataLoaded = value;
                     OnPropertyChanged(nameof(IsDataLoaded));
+                }
+            }
+        }
+
+        public string State
+        {
+            get { return _state; }
+            set
+            {
+                if (_state != value)
+                {
+                    _state = value;
+                    OnPropertyChanged(nameof(State));
                 }
             }
         }
@@ -152,13 +202,16 @@ namespace GamesCrane.ViewModel
             return index;
         }
 
-
         public Game GetGame(string imageName)
         {
             int gameNum = int.Parse(imageName.Where(Char.IsDigit).ToArray());
-            int[] vendNum = GameIndex(gameNum);
-            Game game = Games[vendNum[0], vendNum[1]];
+            return GetGame(gameNum);
+        }
 
+        public Game GetGame(int regIndex)
+        {
+            int[] vendNum = GameIndex(regIndex);
+            Game game = Games[vendNum[0], vendNum[1]];
             return game;
         }
 
@@ -199,12 +252,15 @@ namespace GamesCrane.ViewModel
 
         private async void OnLoad()
         {
-            Games = await AppStateManagerService.LoadAppStateAsync();
+            Object[] data = await AppStateManagerService.LoadAppStateAsync();
+            Games = (Game[,])data[1];
+            GamesCount = (int)data[0];
             IsDataLoaded = true;
         }
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
