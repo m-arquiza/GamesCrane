@@ -26,7 +26,7 @@ namespace GamesCrane.ViewModel
         private readonly NavigationService _navigationService;
         public ICommand NavigateToAddCommand { get; }
         public ICommand ReturnToMainScreenCommand { get; }
-        public ICommand StartModifyCommand { get; }
+        public ICommand StartSwitchCommand { get; }
         public ICommand StartRemoveCommand { get; }
 
         public EditViewModel()
@@ -37,7 +37,7 @@ namespace GamesCrane.ViewModel
             NavigateToAddCommand = new RelayCommand(NavigateToAdd);
             ReturnToMainScreenCommand = new RelayCommand(GoBack);
 
-            StartModifyCommand = new RelayCommand(NavigateToMainModifyState);
+            StartSwitchCommand = new RelayCommand(NavigateToMainSwitchState);
             StartRemoveCommand = new RelayCommand(NavigateToMainRemoveState);
         }
 
@@ -50,9 +50,9 @@ namespace GamesCrane.ViewModel
             _navigationService.Navigate(typeof(MainPage));
         }
 
-        private void NavigateToMainModifyState()
+        private void NavigateToMainSwitchState()
         {
-            _navigationService.Navigate(typeof(MainPage), "modify");
+            _navigationService.Navigate(typeof(MainPage), "switch");
         }
 
         private void NavigateToMainRemoveState()

@@ -26,8 +26,8 @@
                         </Button.Background>
                     </Button>
 
-                    <Button Command="{Binding StartModifyCommand}" Width="265" Height ="63" Name="ModifyButton"
-                            VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 17, 0, 0"  IsEnabled="False">
+                    <Button Command="{Binding StartSwitchCommand}" Width="265" Height ="63" Name="SwitchButton"
+                            VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 17, 0, 0">
                         <Button.Background>
                             <SolidColorBrush Color="Transparent"/>
                         </Button.Background>

@@ -30,7 +30,7 @@ namespace GamesCrane.View
     {
         private MainViewModel viewModel;
         private bool vended;
-        private string[,] gameImages;
+        private bool selected;
         private bool needsInitialUpdate;
         private string state;
         private Image background;
@@ -44,8 +44,8 @@ namespace GamesCrane.View
             DataContext = viewModel;
 
             vended = false;
+            selected = false;
 
-            gameImages = new string[3,5];
             needsInitialUpdate = true;
             state = viewModel.State;
 
@@ -84,6 +84,22 @@ namespace GamesCrane.View
                 flyoutShow = 1;
                 state = "remove";
                 viewModel.State = "remove";
+            }
+
+            else if (e.Parameter is string && e.Parameter.Equals("switch"))
+            {
+                Container.Focus(FocusState.Programmatic);
+                UpdateImageHelper(background, "ms-appx:///Assets/MainPageBackground_Switching.png");
+
+                TextBlock flyText = (TextBlock)FindName("StateText");
+                flyText.Text = "Click game to select game to swap to a different spot. Double-click game to switch the games' spots.";
+
+                edit.IsEnabled = false;
+                play.IsEnabled = false;
+
+                flyoutShow = 1;
+                state = "switch";
+                viewModel.State = "switch";
             }
 
             else if (e.Parameter is Game)
@@ -159,7 +175,15 @@ namespace GamesCrane.View
 
         private void Game_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            Vend(sender);
+            if (state.Equals("default") || state.Equals("remove"))
+            {
+                Vend(sender);
+            }
+            if (state.Equals("switch") && !selected)
+            {
+                Vend(sender);
+                selected = true;
+            }
             e.Handled = true;
         }
 
@@ -170,7 +194,7 @@ namespace GamesCrane.View
                 Vend(sender);
                 LaunchGame(sender, (RoutedEventArgs)e);
             }
-            else if (state.Equals("remove") && sender is Image clickedImage)
+            else if (state.Equals("remove") && sender is Image removeImage)
             {
                 Image vendImage = (Image)FindName("GameSelectedImage");
                 vendImage.Source = null;
@@ -178,7 +202,7 @@ namespace GamesCrane.View
                 TextBlock vendTitle = (TextBlock)FindName("GameSelectedTitle");
                 vendTitle.Text = "";
 
-                Game game = SetVendedGameFromImage(clickedImage);
+                Game game = SetVendedGameFromImage(removeImage);
                 RemoveFromPort();
 
                 viewModel.DeleteGame(game);
@@ -186,10 +210,19 @@ namespace GamesCrane.View
                 UpdateImagesFromGames();
                 HandleLastImageAfterDelete();
             }
+            else if (state.Equals("switch") && sender is Image switchImage)
+            {
+                string imageName = switchImage.Name;
+                Game original = viewModel.GetGame(imageName);
+                viewModel.SwapGame(original);
+
+                RemoveFromPort();
+                UpdateImagesFromGames();
+
+                selected = false;
+            }
             e.Handled = true;
         }
-
-
 
 
         private void Vend(object sender)
@@ -258,7 +291,7 @@ namespace GamesCrane.View
 
         private void KeyboardAccelerator_Invoked( KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
-            if (state.Equals("remove"))
+            if (state.Equals("remove") || state.Equals("switch")) 
             {
                 UpdateImageHelper(background, "ms-appx:///Assets/MainPageBackground.png");
 

@@ -134,6 +134,22 @@ namespace GamesCrane.ViewModel
             }
         }
 
+        public void SwapGame(Game original)
+        {
+            int[] swapVendIndex = VendedGame.VendIndex;
+            int[] origVendIndex = original.VendIndex;
+            VendedGame.VendIndex = origVendIndex;
+            original.VendIndex = swapVendIndex;
+
+            int swapNumIndex = VendedGame.NumIndex;
+            int origNumIndex = original.NumIndex;
+            VendedGame.NumIndex = origNumIndex;
+            original.NumIndex = swapNumIndex;
+
+            Games[swapVendIndex[0], swapVendIndex[1]] = original;
+            Games[origVendIndex[0], origVendIndex[1]] = VendedGame;
+        }
+
         public int GamesCount
         {
             get { return _gamesCount; }
