@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +9,10 @@ using System.Threading.Tasks;
 namespace GamesCrane.Model
 {
     [Serializable]
+    /// <summary>
+    /// A <c>Game</c> models a game within the vending machine with associated title, executable path, and image path. 
+    /// Additionally holds indexes and information about the path.
+    /// </summary>
     public class Game
     {
         private string _title;

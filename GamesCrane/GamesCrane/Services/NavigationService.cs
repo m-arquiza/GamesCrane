@@ -9,6 +9,9 @@ using Microsoft.UI.Xaml.Media.Animation;
 
 namespace GamesCrane.Services
 {
+    /// <summary>
+    /// The <c>NavigationService</c> is used to navigate between pages.
+    /// </summary>
     public class NavigationService
     {
         private Frame _frame;
@@ -18,6 +21,11 @@ namespace GamesCrane.Services
             _frame = frame;
         }
 
+        /// <summary>
+        /// Navigaes to the given page.
+        /// <param name="pageType">type of page to navigate to</param> 
+        /// <param name="parameter">optional parameter to pass to the page</param> 
+        /// </summary>
         public void Navigate(Type pageType, object parameter = null)
         {
             _frame.Navigate(pageType, parameter,

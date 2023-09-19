@@ -16,6 +16,9 @@ using Windows.Foundation.Collections;
 
 namespace GamesCrane.View
 {
+    /// <summary>
+    /// The <c>EditPage</c> is the page that enables the selection of add, edit, and remove functionality.
+    /// </summary>
     public sealed partial class EditPage : Page
     {
         private EditViewModel viewModel;

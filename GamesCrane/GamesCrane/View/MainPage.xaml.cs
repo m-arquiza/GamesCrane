@@ -26,6 +26,9 @@ using Windows.System;
 
 namespace GamesCrane.View
 {
+    /// <summary>
+    /// The <c>MainPage</c> is the page that models the vending machine itself.
+    /// </summary>
     public sealed partial class MainPage : Page
     {
         private MainViewModel viewModel;
@@ -58,6 +61,11 @@ namespace GamesCrane.View
             Container.PointerMoved += ShowFlyoutHandler;
         }
 
+        /// <summary>
+        /// Handles special navigation: if a state is specified, will switch app into that state; 
+        /// otherwise if a game is specified, adds a new game to the "machine".
+        /// <param name="e">optional parameter that will either hold a state to switch to or a game to add</param> 
+        /// </summary>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             if (needsInitialUpdate)
@@ -115,6 +123,10 @@ namespace GamesCrane.View
             }
         }
 
+        /// <summary>
+        /// Updates the corresponding XML image of the given game to the given game's image.
+        /// <param name="newGame">game with the image to update</param> 
+        /// </summary>
         public void UpdateImage(Game newGame)
         {
             int picIndex = newGame.NumIndex;
@@ -131,7 +143,11 @@ namespace GamesCrane.View
             }
 
         }
-
+        /// <summary>
+        /// Helper function to update the given XML image from the given image path.
+        /// <param name="image">image to update</param> 
+        /// <param name="path">new image source</param> 
+        /// </summary>
         private void UpdateImageHelper(Image image, string path)
         {
             var bitmapImage = new BitmapImage();
@@ -139,6 +155,9 @@ namespace GamesCrane.View
             image.Source = bitmapImage;
         }
 
+        /// <summary>
+        /// Updates all XML images to match their corresponding game information.
+        /// </summary>
         private void UpdateImagesFromGames()
         {
             Game[,] games = viewModel.Games;
@@ -157,6 +176,9 @@ namespace GamesCrane.View
             }
         }
 
+        /// <summary>
+        /// After shifting all games down after game deletion, makes sure the last game's image is also deleted.
+        /// </summary>
         private void HandleLastImageAfterDelete()
         {
             if (viewModel.GamesCount == 0)
@@ -173,6 +195,11 @@ namespace GamesCrane.View
             }
         }
 
+        /// <summary>
+        /// Shows game in viewport onclick if not in an active switch.
+        /// <param name="sender">image to show</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
         private void Game_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (state.Equals("default") || state.Equals("remove"))
@@ -187,6 +214,12 @@ namespace GamesCrane.View
             e.Handled = true;
         }
 
+        /// <summary>
+        /// If default state, launches game. On remove state, removes game. 
+        /// On switch state and actively switching, switch game with currently vended game.
+        /// <param name="sender">image to show</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
         private void Game_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
             if (state.Equals("default"))
@@ -225,6 +258,11 @@ namespace GamesCrane.View
         }
 
 
+        /// <summary>
+        /// Shows specified game information at viewport.
+        /// <param name="sender">game to show</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
         private void Vend(object sender)
         {
             if (sender is Image clickedImage)
@@ -244,6 +282,11 @@ namespace GamesCrane.View
             }
         }
 
+        /// <summary>
+        /// Removes game from viewport.
+        /// <param name="sender">overall machine clickable bounds</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
         private void UnVend(object sender, TappedRoutedEventArgs e)
         {
             if (vended)
@@ -252,7 +295,10 @@ namespace GamesCrane.View
                 vended = false;
             }
         }
-        
+
+        /// <summary>
+        /// Sets viewport image and title to nothing.
+        /// </summary>
         private void RemoveFromPort()
         {
             Image vendImage = (Image)FindName("GameSelectedImage");
@@ -262,6 +308,11 @@ namespace GamesCrane.View
             vendTitle.Text = "";
         }
 
+        /// <summary>
+        /// Sets vended game to the image that was clicked.
+        /// <param name="gameImage">image to get game from</param> 
+        /// <returns> Game from image </returns>
+        /// </summary>
         private Game SetVendedGameFromImage(Image gameImage)
         {
             string imageName = gameImage.Name;
@@ -271,6 +322,11 @@ namespace GamesCrane.View
             return game;
         }
 
+        /// <summary>
+        /// Launches game from its executable path.
+        /// <param name="sender">play button or doubleclicked image</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
         private void LaunchGame(object sender, RoutedEventArgs e)
         {
             bool success = viewModel.GameLaunch();
@@ -280,6 +336,12 @@ namespace GamesCrane.View
             }
         }
 
+
+        /// <summary>
+        /// If special state, show state instructions.
+        /// <param name="sender">overall machine pointer movable bounds</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
         private void ShowFlyoutHandler(object sender, PointerRoutedEventArgs e)
         {
             if (flyoutShow == 1)
@@ -289,7 +351,12 @@ namespace GamesCrane.View
             }
         }
 
-        private void KeyboardAccelerator_Invoked( KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+        /// <summary>
+        /// Removes special state if in one.
+        /// <param name="sender">keyboard</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
+        private void KeyboardAccelerator_Invoked( KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs e)
         {
             if (state.Equals("remove") || state.Equals("switch")) 
             {

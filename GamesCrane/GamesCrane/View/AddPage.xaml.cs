@@ -24,6 +24,9 @@ using GamesCrane.Model;
 
 namespace GamesCrane.View
 {
+    /// <summary>
+    /// The <c>AddPage</c> is the page that holds all functionality for adding a new game.
+    /// </summary>
     public sealed partial class AddPage : Page
     {
         private AddViewModel viewModel;
@@ -38,6 +41,11 @@ namespace GamesCrane.View
             _imageselectService = new ImageSelectionService();
         }
 
+        /// <summary>
+        /// Enables user to select image then displays it for confirmation.
+        /// <param name="sender">select button</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
         public async void SelectImage(object sender, RoutedEventArgs e)
         {
             try
@@ -64,6 +72,12 @@ namespace GamesCrane.View
             }
         }
 
+        /// <summary>
+        /// Sets corresponding data based on user-input.
+        /// <param name="sender">buttons, textboxes, checkboxes, etc.</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
+
         private void handleAdmin(object sender, RoutedEventArgs e)
         {
             viewModel.GameNeedsAdmin = !viewModel.GameNeedsAdmin;
@@ -80,6 +94,12 @@ namespace GamesCrane.View
             SendDetailsButton.IsEnabled = !string.IsNullOrEmpty(textBox.Text);
         }
 
+        /// <summary>
+        /// If shorcut path invalid, errors and informs user. 
+        /// Otherwise, goes for additional error checking before adding to "machine".
+        /// <param name="sender">send button</param> 
+        /// <param name="e">event data</param> 
+        /// </summary>
         private void VerifyAndSend(object sender, RoutedEventArgs e)
         {
             if (!viewModel.verifyPath())

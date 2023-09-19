@@ -12,8 +12,16 @@ using System.Diagnostics;
 
 namespace GamesCrane.Services
 {
+    /// <summary>
+    /// The <c>AppStateManagerService</c> is used to save and load games from the vending machine into storage.
+    /// </summary>
     public static class AppStateManagerService
     {
+
+        /// <summary>
+        /// Saves given list of games to disk.
+        /// <param name="games">games to save</param> 
+        /// </summary>
         public static async Task SaveAppStateAsync(Game[,] games)
         {
             var localFolder = ApplicationData.Current.LocalFolder;
@@ -37,6 +45,13 @@ namespace GamesCrane.Services
             }
         }
 
+        /// <summary>
+        /// Loads and returns saved games from disk.
+        /// <returns>
+        /// An Object[] array such that the first element is the number of games loaded
+        /// and the second is the loaded games.
+        /// </returns>
+        /// </summary>
         public static async Task<Object[]> LoadAppStateAsync()
         {
             Game[,] games = new Game[3, 5];

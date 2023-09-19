@@ -25,7 +25,6 @@ namespace GamesCrane
         public MainWindow()
         {
             this.InitializeComponent();
-            //this.Closed += MainWindow_Closed;
 
             // Resizes and positions window in center of screen
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);

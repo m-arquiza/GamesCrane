@@ -15,6 +15,9 @@ using Windows.Foundation.Collections;
 
 namespace GamesCrane.View
 {
+    /// <summary>
+    /// The <c>AddGameDetailsContentDialog</c> confirms (or enables modification for) that default game values (image and/or title) will be used.
+    /// </summary>
     public sealed partial class AddGameDetailsContentDialog : ContentDialog
     {
         public AddGameDetailsContentDialog()

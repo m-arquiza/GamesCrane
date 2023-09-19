@@ -19,6 +19,9 @@ using CommunityToolkit.WinUI.UI.Controls;
 
 namespace GamesCrane.ViewModel
 {
+    /// <summary>
+    /// The <c>MainViewModel</c> represents the vending machine and all its information.
+    /// </summary>
     public class MainViewModel
     {
         private readonly NavigationService _navigationService;
@@ -126,6 +129,10 @@ namespace GamesCrane.ViewModel
             OnPropertyChanged(nameof(Games));
         }
 
+        /// <summary>
+        /// Lowers the specified game's index by 1.
+        /// <param name="game">game to lower index</param> 
+        /// </summary>
         private void LowerGameIndex(Game game)
         {
             if (game != null)
@@ -134,6 +141,10 @@ namespace GamesCrane.ViewModel
             }
         }
 
+        /// <summary>
+        /// Swaps the given game and the currently vended game's locations.
+        /// <param name="original">game the vended game will swap with</param> 
+        /// </summary>
         public void SwapGame(Game original)
         {
             int[] swapVendIndex = VendedGame.VendIndex;
@@ -202,6 +213,13 @@ namespace GamesCrane.ViewModel
             }
         }
 
+        /// <summary>
+        /// Given a game's index, converts index to its index in the 2d array.
+        /// <param name="gameNum">index to convert</param> 
+        /// <returns>
+        /// The 2d index where the first element is the outer array index 
+        /// and the second element is the inner array index. </returns>
+        /// </summary>
         public int[] GameIndex(int gameNum)
         {
             int[] index = new int[2];
@@ -218,12 +236,22 @@ namespace GamesCrane.ViewModel
             return index;
         }
 
+        /// <summary>
+        /// Given clicked image, returns the associated game.
+        /// <param name="imageName">image clicked</param> 
+        /// <returns> Game associated with the clicked image. </returns>
+        /// </summary>
         public Game GetGame(string imageName)
         {
             int gameNum = int.Parse(imageName.Where(Char.IsDigit).ToArray());
             return GetGame(gameNum);
         }
 
+        /// <summary>
+        /// The normal index, returns the associated game.
+        /// <param name="regIndex">index to convert to 2d index</param> 
+        /// <returns> Game associated with the clicked image. </returns>
+        /// </summary>
         public Game GetGame(int regIndex)
         {
             int[] vendNum = GameIndex(regIndex);
@@ -256,16 +284,25 @@ namespace GamesCrane.ViewModel
             }
         }
 
+        /// <summary>
+        /// Navigates to the Edit page.
+        /// </summary>
         private void NavigateToEdit()
         {
             _navigationService.Navigate(typeof(EditPage));
         }
 
+        /// <summary>
+        /// Saves games to file.
+        /// </summary>
         private async void OnSave()
         {
             await AppStateManagerService.SaveAppStateAsync(Games);
         }
 
+        /// <summary>
+        /// Loads games from file.
+        /// </summary>
         private async void OnLoad()
         {
             Object[] data = await AppStateManagerService.LoadAppStateAsync();

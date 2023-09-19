@@ -16,6 +16,9 @@ using System.IO;
 namespace GamesCrane.ViewModel
 
 {
+    /// <summary>
+    /// The <c>EditViewModel</c> handles all verification, navigation, and information itself about a new game to add.
+    /// </summary>
     public class AddViewModel
     {
         private Window m_window;
@@ -40,6 +43,9 @@ namespace GamesCrane.ViewModel
             NewGame.ImagePath = "ms-appx:///Assets/StarsBorder.png";
         }
 
+        /// <summary>
+        /// Checks if the game's title or path equals the default values, and confirms that user is fine with default values.
+        /// </summary>
         public async void CheckDetails()
         {
             if (GameTitle.Equals("Untitled Game") |
@@ -63,6 +69,9 @@ namespace GamesCrane.ViewModel
             }
         }
 
+        /// <summary>
+        /// From the stored game information, ensures that given executable path is valid.
+        /// </summary>
         public bool verifyPath()
         {
             string filePath = GamePath.Replace("\"", "");
@@ -110,12 +119,18 @@ namespace GamesCrane.ViewModel
             return false;
         }
 
+        /// <summary>
+        /// From the stored game, sends game to mainpage to be added to the "machine".
+        /// </summary>
         public void SendDetails()
         {
             Game toAdd = new Game(NewGame);
             _navigationService.Navigate(typeof(MainPage), NewGame);
         }
 
+        /// <summary>
+        /// Navigates back to the Edit page.
+        /// </summary>
         public void GoBack()
         {
             _navigationService.Navigate(typeof(EditPage));
@@ -133,6 +148,7 @@ namespace GamesCrane.ViewModel
                 }
             }
         }
+        
         public string GameTitle
         {
             get { return NewGame.Title; }

@@ -12,10 +12,16 @@ using System.Diagnostics;
 
 namespace GamesCrane.Services
 {
+    /// <summary>
+    /// The <c>ImageSelectionService</c> is used to open a file selector and enable image selection.
+    /// </summary>
     public class ImageSelectionService
     {
         public StorageFile ImageSelected;
 
+        /// <summary>
+        /// Opens the file selector for an image and records the file.
+        /// </summary>
         public async Task SelectImageAsync()
         {
             try
